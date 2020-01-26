@@ -1,0 +1,71 @@
+:root {
+    --col-theme: #34558b;
+    --col-theme-accent: #49689b;
+    --col-theme-fg: #eff1fa;
+
+    --col-superwhite: #ffffff;
+}
+
+/* General CSS */
+body{
+    padding: 0;
+    margin: 0;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    color:var(--col-superwhite);
+    text-decoration: none;
+}
+
+/* CSS for header goes here */
+.main-header {
+    background-color: var(--col-theme);
+    color: var(--col-theme-fg);
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: 3em  auto  3em;
+    grid-template-areas:  "menudrop logo  searchlens"
+                          "menu menu menu";
+}
+
+.logo {
+    grid-area: logo;
+    text-align: center;
+    align-self: center;
+}
+
+.main-menu {
+    grid-area: menu;
+    background-color: var(--col-theme-accent);
+}
+
+.main-menu a {
+    display: block;
+    line-height: 2;
+}
+
+/* Media Query Starts Here--- */
+@media screen and (min-width: 60em) {
+    .navbar {
+        grid-template-columns: 3em  auto  3em;
+        grid-template-areas:  "logo menu search";  
+    }
+
+    .main-menu {
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: var(--col-theme);
+    }
+}
