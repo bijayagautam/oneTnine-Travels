@@ -28,7 +28,7 @@ app.get("/roomListing",(req,res)=>{
 });
 
 //Creating Web Server
-const PORT=3000;
+const PORT=7000;
 app.listen(PORT,()=>{
     console.log(`Web server is up and running!`)
 })

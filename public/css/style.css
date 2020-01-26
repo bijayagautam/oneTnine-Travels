@@ -30,6 +30,7 @@ a{
 .main-header {
     background-color: var(--col-theme);
     color: var(--col-theme-fg);
+    padding: 0 1em;
 }
 
 .navbar {
@@ -45,6 +46,11 @@ a{
     align-self: center;
 }
 
+.ham-menu {
+    grid-area: menudrop;
+    text-align: center;
+}
+
 .main-menu {
     grid-area: menu;
     background-color: var(--col-theme-accent);
@@ -55,11 +61,17 @@ a{
     line-height: 2;
 }
 
+.search-lens {
+    grid-area: searchlens;
+    text-align: center;
+    padding: 1em 0;
+}
+
 /* Media Query Starts Here--- */
 @media screen and (min-width: 60em) {
     .navbar {
         grid-template-columns: 3em  auto  3em;
-        grid-template-areas:  "logo menu search";  
+        grid-template-areas:  "logo menu searchlens";  
     }
 
     .main-menu {
@@ -67,5 +79,9 @@ a{
         display: flex;
         justify-content: space-evenly;
         background-color: var(--col-theme);
+    }
+
+    .ham-menu {
+        display: none;
     }
 }
