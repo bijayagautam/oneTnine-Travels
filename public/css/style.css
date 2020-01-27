@@ -49,6 +49,7 @@ a{
 .ham-menu {
     grid-area: menudrop;
     text-align: center;
+    padding: 1em 0;
 }
 
 .main-menu {
