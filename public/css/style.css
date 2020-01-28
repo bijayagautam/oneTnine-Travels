@@ -3,7 +3,11 @@
     --col-theme-accent: #49689b;
     --col-theme-fg: #eff1fa;
 
+    --col-darktheme:rgb(2, 18, 88);
+    --col-lighttheme:rgb(185, 237, 250);
+    
     --col-superwhite: #ffffff;
+    --col-superdark: #000000;
 }
 
 /* General CSS */
@@ -22,8 +26,12 @@ ul,li{
 }
 
 a{
-    color:var(--col-superwhite);
     text-decoration: none;
+}
+
+.other-link{
+    color: var(--col-darktheme);
+    font-weight: bold;
 }
 
 /* CSS for header starts here */
@@ -57,6 +65,7 @@ a{
 }
 
 .main-menu a {
+    color:var(--col-superwhite);
     display: block;
     line-height: 2;
 }
@@ -65,6 +74,52 @@ a{
     grid-area: searchlens;
     text-align: center;
     padding: 1em 0;
+}
+
+/* CSS for main footer starts here */
+.main-content{
+    padding: 0 1em;
+}
+
+.registration{
+    padding: 1em 0;
+}
+
+.user-registration-form{
+    margin: 0 auto;
+    max-width: 25em;
+    min-width: 20em;
+    padding: 1em;
+    box-shadow: 0.1em 0.1em 0.2em var(--col-lighttheme);
+    border-radius: 0.2em;
+}
+
+.registration-info{
+    text-align: center;
+}
+
+.registration-box input{
+    width: 80%;
+    padding: 0.8em;
+    border-radius: 0.2em;
+    border: 0 solid;
+    background-color: var(--col-lighttheme);
+    padding-left: 1.5em;
+}
+
+.signup-button{
+    margin: 1em 2em;
+    background-color:var(--col-darktheme);
+    color: var(--col-superwhite);
+    padding: 0.5em;
+    text-align: center;
+    font-size: 1em;
+    border: none;
+    border-radius: 0.3em;
+}
+
+.registration-question{
+    padding: 0 0 0 2em;
 }
 
 /* CSS for main footer starts here */
@@ -77,6 +132,10 @@ a{
     text-align: left;
     padding: 1em 1em 0 1em;
     line-height: 2;
+}
+
+.quick-link a{
+    color:var(--col-superwhite);
 }
 
 .business-info{
