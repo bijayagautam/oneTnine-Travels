@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
+
 :root {
     --col-theme: #34558b;
     --col-theme-accent: #49689b;
@@ -8,6 +10,8 @@
     
     --col-superwhite: #ffffff;
     --col-superdark: #000000;
+
+    --content-font: 'Titillium Web', sans-serif;
 }
 
 /* General CSS */
@@ -39,6 +43,7 @@ a{
     background-color: var(--col-theme);
     color: var(--col-theme-fg);
     padding: 0 1em;
+    font-family: var(--content-font);
 }
 
 .navbar {
@@ -76,9 +81,10 @@ a{
     padding: 1em 0;
 }
 
-/* CSS for main footer starts here */
+/* CSS for main content starts here */
 .main-content{
     padding: 0 1em;
+    font-family: var(--content-font);
 }
 
 .registration{
@@ -126,6 +132,7 @@ a{
 .main-footer{
     background-color: var(--col-theme-accent);
     color: var(--col-theme-fg);
+    font-family: var(--content-font);
 }
 
 .quick-link{
