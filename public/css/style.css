@@ -179,6 +179,10 @@ a{
     font-size: 1rem;
 }
 
+/* css to toggle show and hide content */
+.show-hide{
+    display: none;
+}
 
 /* Media Query Starts Here--- */
 @media screen and (min-width: 60em) {
