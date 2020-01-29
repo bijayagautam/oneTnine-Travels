@@ -141,6 +141,14 @@ a{
     padding-left: 1.5em;
 }
 
+.photo-galary{
+    padding: 0 1em;
+}
+
+.promotion{
+    display: inline;
+}
+
 /* CSS for main footer starts here */
 .main-footer{
     background-color: var(--col-theme-accent);
@@ -211,5 +219,11 @@ a{
         display: inline;
         padding: 0 1em;
         grid-area: homeinfo;
+    }
+
+    .promotion{
+        display: grid;
+        grid-template-columns: auto  auto auto;
+        grid-gap: 1em;
     }
 }
