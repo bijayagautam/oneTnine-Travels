@@ -87,11 +87,11 @@ a{
     font-family: var(--content-font);
 }
 
-.registration{
+.form{
     padding: 1em 0;
 }
 
-.user-registration-form{
+.user-entry-form{
     margin: 0 auto;
     max-width: 25em;
     min-width: 20em;
@@ -100,11 +100,11 @@ a{
     border-radius: 0.2em;
 }
 
-.registration-info{
+.form-info{
     text-align: center;
 }
 
-.registration-box input{
+.form-box input{
     width: 80%;
     padding: 0.8em;
     border-radius: 0.2em;
@@ -124,8 +124,17 @@ a{
     border-radius: 0.3em;
 }
 
-.registration-question{
+.form-question{
     padding: 0 0 0 2em;
+}
+
+.form-dropdown{
+    width: 89%;
+    padding: 0.8em;
+    border-radius: 0.2em;
+    border: 0 solid;
+    background-color: var(--col-lighttheme);
+    padding-left: 1.5em;
 }
 
 /* CSS for main footer starts here */

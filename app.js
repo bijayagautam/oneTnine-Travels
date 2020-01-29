@@ -14,7 +14,7 @@ app.set('view engine', 'handlebars');
 app.get("/",(req,res)=>{
     res.render("home",{
         title: "oneTnine Travel",
-        description: "Welcome to oneTnine Travel.",
+        description: "Welcome to oneTnine Travel",
         mainContent: "We are here to make your travel dream come true."
     })
 });
