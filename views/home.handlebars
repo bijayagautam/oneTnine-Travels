@@ -1,45 +1,53 @@
+<div class="home-sepration">
+    <section class="home-info">
+        <h1>{{description}}</h1>
+        <p>{{mainContent}}</p>
+        <p class="inspirational-quote">"I WISH I HAD NEVER GONE TRAVELING. SAID NO ONE EVER" ~anonymous</p>
+    </section>
+
+    <section class="form">
+        <form class="user-entry-form">
+            <div class="form-info">
+                <p>Book places to stay and things to do anywhere.</p>
+                <hr>
+            </div>
+        
+            <ul class="form-box">
+                <p>PLACE:</p>
+                <li><label for="where"></label></li>
+                <li><input type="text" name="place" placeholder="Anywhere you like"></li>
+
+                <p>CHECK-IN:</p>
+                <li><label for="checkin"></label></li>
+                <li><input type="date" name="checkIn"></li>
+
+                <p>CHECK OUT:</p>
+                <li><label for="checkin"></label></li>
+                <li><input type="date" name="checkOut"></li>
+
+                <p>GUESTS:</p>
+                <li><label for="guests"></label></li>
+                <li>
+                    <select name="guests" class="form-dropdown">
+                        <option value="" selected>Please select no. of guest(s)</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6+</option>
+                    </select>
+                </li>
+            </ul>
+
+            <div>
+                <input type="button" value="Search" class="form-button">
+            </div>
+        </form>
+    </section>
+</div>
+
 <section>
-    <h1>{{description}}</h1>
-    <p>{{mainContent}}</p>
-</section>
-
-<section class="form">
-    <form class="user-entry-form">
-        <div class="form-info">
-            <p>Book places to stay and things to do anywhere.</p>
-            <hr>
-        </div>
-       
-        <ul class="form-box">
-            <p>PLACE:</p>
-            <li><label for="where"></label></li>
-            <li><input type="text" name="place" placeholder="Anywhere you like"></li>
-
-            <p>CHECK-IN:</p>
-            <li><label for="checkin"></label></li>
-            <li><input type="date" name="checkIn"></li>
-
-            <p>CHECK OUT:</p>
-            <li><label for="checkin"></label></li>
-            <li><input type="date" name="checkOut"></li>
-
-            <p>GUESTS:</p>
-            <li><label for="guests"></label></li>
-            <li>
-                <select name="guests" class="form-dropdown">
-                    <option value="" selected>Please select no. of guest(s)</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6+</option>
-                </select>
-            </li>
-        </ul>
-
-        <div>
-            <input type="button" value="Search" class="signup-button">
-        </div>
-    </form>
+    {{!-- Photo by Kym Ellis on Unsplash * --}}
+    <img src="/img/homeview-01.jpg" alt="home image">
 </section>

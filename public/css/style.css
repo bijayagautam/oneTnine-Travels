@@ -82,8 +82,12 @@ a{
 }
 
 /* CSS for main content starts here */
-.main-content{
+.home-info{
+    display: none;
     padding: 0 1em;
+}
+
+.main-content{
     font-family: var(--content-font);
 }
 
@@ -113,7 +117,7 @@ a{
     padding-left: 1.5em;
 }
 
-.signup-button{
+.form-button{
     margin: 1em 2em;
     background-color:var(--col-darktheme);
     color: var(--col-superwhite);
@@ -159,6 +163,10 @@ a{
     padding: 0 0 1em 0;
 }
 
+.inspirational-quote{
+    font-size: 1rem;
+}
+
 
 /* Media Query Starts Here--- */
 @media screen and (min-width: 60em) {
@@ -193,4 +201,15 @@ a{
         grid-area: businessinfo;
     }
     
+    .home-sepration{
+        display: grid;
+        grid-template-columns: 30em  auto;
+        grid-template-areas:  "homeinfo booking";
+    }
+
+    .home-info{
+        display: inline;
+        padding: 0 1em;
+        grid-area: homeinfo;
+    }
 }
