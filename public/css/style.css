@@ -42,7 +42,6 @@ a{
 .main-header {
     background-color: var(--col-theme);
     color: var(--col-theme-fg);
-    padding: 0 1em;
     font-family: var(--content-font);
 }
 
@@ -50,7 +49,8 @@ a{
     display: grid;
     grid-template-columns: 3em  auto  3em;
     grid-template-areas:  "menudrop logo  searchlens"
-                          "menu menu menu";
+                          "menu menu menu"
+                          "searchcontainer searchcontainer searchcontainer";
 }
 
 .logo-container{
@@ -83,6 +83,21 @@ a{
     grid-area: searchlens;
     text-align: center;
     padding: 1em 0;
+}
+
+.searchbox{
+    width: 100%;
+    padding: 1.2em;
+    border: 0 solid;
+    background-color: var(--col-lighttheme);
+    background-image: url('/img/search.svg');
+    background-repeat: no-repeat;
+    background-position: 0.50em;
+    padding-left: 2.5em;
+}
+
+.search-content{
+    grid-area: searchcontainer;
 }
 
 /* CSS for main content starts here */
@@ -187,8 +202,8 @@ a{
 /* Media Query Starts Here--- */
 @media screen and (min-width: 60em) {
     .navbar {
-        grid-template-columns: 3em  auto  3em;
-        grid-template-areas:  "logo menu searchlens";  
+        grid-template-columns: 10em  auto  20em 3.5em;
+        grid-template-areas:  "logo menu searchcontainer searchlens";  
     }
 
     .main-menu {
@@ -200,6 +215,16 @@ a{
 
     .ham-menu {
         display: none;
+    }
+
+    .searchbox{
+        border-radius: 0.2em;
+    }
+
+    .search-content{
+        grid-area: searchcontainer;
+        padding: 1em 0;
+        width: 100%;
     }
 
     .main-footer{
