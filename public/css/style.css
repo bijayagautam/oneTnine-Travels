@@ -259,4 +259,11 @@ a{
         grid-template-columns: auto  auto auto;
         grid-gap: 1em;
     }
+
+    .room-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 1em;
+        padding: 1em;
+    }
 }
