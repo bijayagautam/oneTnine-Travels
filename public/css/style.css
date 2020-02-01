@@ -10,6 +10,7 @@
     
     --col-superwhite: #ffffff;
     --col-superdark: #000000;
+    --col-highlight: #ee3d1e;
 
     --content-font: 'Titillium Web', sans-serif;
 }
@@ -158,6 +159,11 @@ a{
     border: 0 solid;
     background-color: var(--col-lighttheme);
     padding-left: 1.5em;
+}
+
+.booking-form{
+    font-weight:bold;
+    color: var(--col-highlight);
 }
 
 .photo-galary{
