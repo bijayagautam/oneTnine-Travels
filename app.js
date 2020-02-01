@@ -84,6 +84,10 @@ app.get("/roomListing",(req,res)=>{
     });
 });
 
+app.get("/login",(req,res)=>{
+    res.render("login")
+});
+
 //Creating Web Server
 const PORT=7000;
 app.listen(PORT,()=>{
