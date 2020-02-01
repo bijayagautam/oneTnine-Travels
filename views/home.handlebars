@@ -14,8 +14,20 @@
         
             <ul class="form-box">
                 <p>PLACE:</p>
-                <li><label for="where"></label></li>
-                <li><input type="text" name="place" placeholder="Anywhere you like"></li>
+                {{!-- <li><label for="where"></label></li>
+                <li><input type="text" name="place" placeholder="Anywhere you like"></li> --}}
+                    
+                <label for="city"></label>
+                <li>
+                    <select class="form-dropdown">
+                        <option value="" selected>Please select city you want travel</option>
+                        <option value="Brampton">Brampton</option>
+                        <option value="Oakville">Oakville </option>
+                        <option value="Richmond Hill">Richmond Hill</option>
+                        <option value="Toronto">Toronto</option>
+                        <option value="Calgary">Calgary</option>
+                    </select>
+                </li>
 
                 <p>CHECK-IN:</p>
                 <li><label for="checkin"></label></li>
