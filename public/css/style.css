@@ -15,7 +15,7 @@
 }
 
 /* General CSS */
-body{
+body,h1,h2,h3,h4,h5,h6,p{
     padding: 0;
     margin: 0;
 }
@@ -192,6 +192,23 @@ a{
 
 .inspirational-quote{
     font-size: 1rem;
+}
+
+.room {
+    max-width: 20em;
+    box-shadow: 0.1em 0.1em 0.2em var(--col-lighttheme);
+    border-radius: 0.2em;
+    margin: 1em auto;
+}
+
+.room a{
+    color: var(--col-theme-accent);
+}
+
+.price-rating{
+    display: grid;
+    grid-template-columns: auto 2em;
+    padding: 0.5em;
 }
 
 /* css to toggle show and hide content */

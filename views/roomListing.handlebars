@@ -1,16 +1,14 @@
 <section class="room-list">
     {{#each rooms }}
-        <article>
+        <article class="room">
             <header>
-                <img src={{this.image}}>
+                <a href="#"><img src={{this.image}}></a>
             </header>
-            <a href="#"><h1>{{this.name}}</h1></a>
-            <ul>
-                <li><h2>${{this.price}} CAD/night</h2></li>
-                <li>{{this.description}}</li>
-                <li>Bed Size: {{this.size}}</li>
-                <li>{{this.rating}}</li>
-            </ul>
+            <a href="#"><h3>{{this.name}}</h3></a>
+            <div class="price-rating">
+                <h4>${{this.price}} CAD/night</h4>
+                <sub>{{this.rating}}</sub>
+            </div>            
         </article>
     {{/each}}
 </section>
