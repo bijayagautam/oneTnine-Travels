@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif&display=swap');
 :root {
     --col-theme: #04a5a5;
     --col-theme-accent: #1c3029;
@@ -13,6 +13,7 @@
     --col-highlight: #ee3d1e;
 
     --content-font: 'Titillium Web', sans-serif;
+    --validation-message-font: 'Noto Serif', serif;
 }
 
 /* General CSS */
@@ -164,6 +165,11 @@ a{
 .booking-form{
     font-weight:bold;
     color: var(--col-highlight);
+}
+
+.message-box{
+    color: var(--col-highlight);
+    font-family: var(--validation-message-font);
 }
 
 .photo-galary{
