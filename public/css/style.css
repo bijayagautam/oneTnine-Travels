@@ -217,6 +217,12 @@ a{
     color: var(--col-theme-accent);
 }
 
+.room:hover{
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
 .price-rating{
     display: grid;
     grid-template-columns: auto 2em;
