@@ -235,33 +235,7 @@ a{
 }
 
 /* Media Query Starts Here--- */
-@media screen and (min-width: 60em) {
-    .navbar {
-        grid-template-columns: 10em  auto  20em 3.5em;
-        grid-template-areas:  "logo menu searchcontainer searchlens";  
-    }
-
-    .main-menu {
-        text-align: center;
-        display: flex;
-        justify-content: space-evenly;
-        background-color: var(--col-theme);
-    }
-
-    .ham-menu {
-        display: none;
-    }
-
-    .searchbox{
-        border-radius: 0.2em;
-    }
-
-    .search-content{
-        grid-area: searchcontainer;
-        padding: 1em 0;
-        width: 100%;
-    }
-
+@media screen and (min-width: 50em) {
     .main-footer{
         display: grid;
         grid-template-columns: 10em  auto  6em;
@@ -297,8 +271,50 @@ a{
 
     .room-list {
         display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1em;
+        padding: 1em;
+    }
+}
+
+@media screen and (min-width: 65em) {
+    .navbar {
+        grid-template-columns: 10em  auto  20em 3.5em;
+        grid-template-areas:  "logo menu searchcontainer searchlens";  
+    }
+
+    .main-menu {
+        text-align: center;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: var(--col-theme);
+    }
+
+    .ham-menu {
+        display: none;
+    }
+
+    .searchbox{
+        border-radius: 0.2em;
+    }
+
+    .search-content{
+        grid-area: searchcontainer;
+        padding: 1em 0;
+        width: 100%;
+    }
+
+    .room-list {
+        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-column-gap: 1em;
         padding: 1em;
+    }
+}
+
+@media screen and (min-width: 95em) {
+    .main-content {
+        margin: 0 auto;
+        max-width: 90em;
     }
 }
