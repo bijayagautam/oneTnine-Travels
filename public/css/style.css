@@ -167,9 +167,10 @@ a{
     color: var(--col-highlight);
 }
 
-.message-box{
+.error-message{
     color: var(--col-highlight);
     font-family: var(--validation-message-font);
+    text-align: center;
 }
 
 .photo-galary{

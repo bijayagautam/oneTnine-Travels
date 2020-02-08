@@ -1,10 +1,14 @@
 const express = require("express");
 const exphbs  = require('express-handlebars');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 //Allowing express to make static content avialable from the public
 app.use(express.static('public'))
+
+//Handaling incoming body post request
+app.use(bodyParser.urlencoded({ extended: false }))
 
 //Telling Express to set or register Handlebars as its' Template/View Engine
 app.engine('handlebars', exphbs());
@@ -86,6 +90,30 @@ app.get("/roomListing",(req,res)=>{
 
 app.get("/login",(req,res)=>{
     res.render("login")
+});
+
+app.post("/login",(req,res)=>{
+    const errors= [];
+    if((req.body.emailAddress=="") || (req.body.emailAddress== null))
+    {
+        errors.push("Please enter your email address.");
+    }
+
+    if((req.body.password=="") || (req.body.password== null))
+    {
+        errors.push("Please enter your password.")
+    }
+
+    if(errors.length > 0)
+    {
+        res.render("login",{
+        messages : errors
+        })
+    }
+    else
+    {
+        res.render("home");
+    }
 });
 
 //Creating Web Server
