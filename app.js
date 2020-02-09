@@ -24,7 +24,10 @@ app.get("/",(req,res)=>{
 });
 
 app.get("/userRegistration",(req,res)=>{
-    res.render("userRegistration")
+    res.render("userRegistration",{
+        title: "User Registration",
+        description: "User Registration Page"
+    })
 });
 
 app.post("/userRegistration",(req,res)=>{
@@ -62,7 +65,11 @@ app.post("/userRegistration",(req,res)=>{
     }
     else
     {
-        res.render("home");
+        res.render("home",{
+            title: "oneTnine Travel",
+            description: "Welcome to oneTnine Travel",
+            mainContent: "We are here to make your travel dream come true."
+        })
     }
 });
 
@@ -122,13 +129,16 @@ app.get("/roomListing",(req,res)=>{
     ];
     res.render("roomListing",{
         title: "Room Listing",
-        headingInfo : "Room Listing Page",
+        description : "Room Listing Page",
         rooms : allRoomsDB
     });
 });
 
 app.get("/login",(req,res)=>{
-    res.render("login")
+    res.render("login",{
+        title: "Login",
+        description : "User login Page"
+    })
 });
 
 app.post("/login",(req,res)=>{
@@ -146,12 +156,18 @@ app.post("/login",(req,res)=>{
     if(errors.length > 0)
     {
         res.render("login",{
-        messages : errors
+            title: "Login",
+            description : "User login Page",
+            messages : errors
         })
     }
     else
     {
-        res.render("home");
+        res.render("home",{
+            title: "oneTnine Travel",
+            description: "Welcome to oneTnine Travel",
+            mainContent: "We are here to make your travel dream come true."
+        })
     }
 });
 
