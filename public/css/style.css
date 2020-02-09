@@ -171,6 +171,8 @@ a{
     color: var(--col-highlight);
     font-family: var(--validation-message-font);
     text-align: center;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
 
 .photo-galary{

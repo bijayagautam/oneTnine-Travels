@@ -27,6 +27,45 @@ app.get("/userRegistration",(req,res)=>{
     res.render("userRegistration")
 });
 
+app.post("/userRegistration",(req,res)=>{
+    const errors= [];
+    if((req.body.emailAddress=="") || (req.body.emailAddress== null))
+    {
+        errors.push("Please enter your email address.");
+    }
+
+    if((req.body.firstname=="") || (req.body.firstname== null))
+    {
+        errors.push("Please enter your first name.");
+    }
+
+    if((req.body.lastname=="") || (req.body.lastname== null))
+    {
+        errors.push("Please enter your last name.");
+    }
+
+    if((req.body.password=="") || (req.body.password== null))
+    {
+        errors.push("Please create Password with UpperCase, LowerCase, Number")
+    }
+
+    if((req.body.bday=="") || (req.body.bday== null))
+    {
+        errors.push("Please enter or select your date of birth.")
+    }
+
+    if(errors.length > 0)
+    {
+        res.render("userRegistration",{
+        messages : errors
+        })
+    }
+    else
+    {
+        res.render("home");
+    }
+});
+
 app.get("/roomListing",(req,res)=>{
 
     // Declaring all rooms details as an array

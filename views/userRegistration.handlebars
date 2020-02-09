@@ -1,5 +1,5 @@
 <section class="form">
-    <form class="user-entry-form">
+    <form method="POST" action="/userRegistration" class="user-entry-form">
         <div class="form-info">
             <p>Sign up with <a href="#" class="other-link">Facebook</a> or <a href="#" class="other-link">Google</a> or</p>
             <hr>
@@ -8,7 +8,7 @@
        
         <ul class="form-box">
             <li><label for="email"></label></li>
-            <li><input type="email" name="emailaddress" placeholder="Email address"></li><br>
+            <li><input type="email" name="emailAddress" placeholder="Email address"></li><br>
 
             <li><label for="firstname"></label></li>
             <li><input type="text" name="firstname" placeholder="First Name"></li><br>
@@ -17,15 +17,18 @@
             <li><input type="text" name="lastname" placeholder="Last Name"></li><br>
 
             <li><label for="password"></label></li>
-            <li><input type="password" name="password" placeholder="Create a password"></li><br>
-
+            <li><input type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Create a password"></li><br>       
+                 
             <p>Birthday: To sign up, you need to be at least 18.</p>
             <li><label for="birthday"></label></li>
             <li><input type="date" name="bday"></li><br>
         </ul>
 
         <div>
-            <input type="button" value="Sign up" class="form-button">
+            {{#each messages}}
+                <div class="error-message">{{this}}</div>
+            {{/each}}
+            <input type="submit" value="Sign up" class="form-button">
         </div>
 
         <div class="form-question">

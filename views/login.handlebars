@@ -8,17 +8,17 @@
        
         <ul class="form-box">
             <li><label for="email"></label></li>
-            <li><input type="email" name="emailAddress" placeholder="Email address" id="loginEmailAddress"></li><br>
+            <li><input type="email" name="emailAddress" placeholder="Email address"></li><br>
 
             <li><label for="password"></label></li>
-            <li><input type="password" name="password" placeholder="Password" id="loginPassword"></li>
+            <li><input type="password" name="password" placeholder="Password"></li>
         </ul>
 
         <div>
             {{#each messages}}
                 <div class="error-message">{{this}}</div>
             {{/each}}
-            <input type="submit" value="Log in" class="form-button" id="loginButton">
+            <input type="submit" value="Log in" class="form-button">
         </div>
 
         <div class="form-question">
