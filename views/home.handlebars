@@ -6,7 +6,7 @@
     </section>
 
     <section class="form">
-        <form class="user-entry-form">
+        <form method="POST" action="/home" class="user-entry-form">
             <div class="form-info booking-form">
                 <p>Book places to stay and things to do anywhere.</p>
                 <hr>
@@ -19,7 +19,7 @@
                     
                 <label for="city"></label>
                 <li>
-                    <select class="form-dropdown">
+                    <select name="city" class="form-dropdown">
                         <option value="" selected>Please select city you want travel</option>
                         <option value="Brampton">Brampton</option>
                         <option value="Oakville">Oakville </option>
@@ -53,7 +53,11 @@
             </ul>
 
             <div>
-                <input type="button" value="Search" class="form-button">
+                {{#each messages}}
+                    <div class="error-message">{{this}}</div>
+                {{/each}}
+                
+                <input type="submit" value="Search" class="form-button">
             </div>
         </form>
     </section>

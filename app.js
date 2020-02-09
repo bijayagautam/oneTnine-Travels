@@ -23,6 +23,46 @@ app.get("/",(req,res)=>{
     })
 });
 
+app.post("/home",(req,res)=>{
+    const errors= [];
+    if((req.body.city=="") || (req.body.city== null))
+    {
+        errors.push("Please select the city.");
+    }
+
+    if((req.body.checkIn=="") || (req.body.checkIn== null))
+    {
+        errors.push("Please select or enter check in date.");
+    }
+
+    if((req.body.checkOut=="") || (req.body.checkOut== null))
+    {
+        errors.push("Please select or enter check out date.")
+    }
+
+    if((req.body.guests=="") || (req.body.guests== null))
+    {
+        errors.push("Please select no. of guest.");
+    }
+
+    if(errors.length > 0)
+    {
+        res.render("home",{
+            title: "oneTnine Travel",
+            description: "Welcome to oneTnine Travel",
+            mainContent: "We are here to make your travel dream come true.",
+            messages : errors
+        })
+    }
+    else
+    {
+        res.render("login",{
+            title: "Login",
+            description : "User login Page"
+        })
+    }
+});
+
 app.get("/userRegistration",(req,res)=>{
     res.render("userRegistration",{
         title: "User Registration",
