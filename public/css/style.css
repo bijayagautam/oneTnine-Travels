@@ -10,7 +10,12 @@
     
     --col-superwhite: #ffffff;
     --col-superdark: #000000;
-    --col-highlight: #ee3d1e;
+    --col-highlight: #fc04ef9f;
+    --col-errormessage: #ee3d1e;
+
+    --col-fb: rgb(57, 99, 235);
+    --col-in: rgb(235, 57, 57);
+    --col-sn: rgb(245, 232, 51);
 
     --content-font: 'Titillium Web', sans-serif;
     --validation-message-font: 'Noto Serif', serif;
@@ -168,9 +173,9 @@ a{
 }
 
 .error-message{
-    color: var(--col-highlight);
+    color: var(--col-errormessage);
     font-family: var(--validation-message-font);
-    text-align: center;
+    padding: 0 0 0 3em;
     font-size: 0.8rem;
     font-weight: bold;
 }
@@ -200,6 +205,10 @@ a{
     color:var(--col-superwhite);
 }
 
+.social-media{
+    text-align: center;
+}
+
 .social-media li{
     font-size: 1.8em;
     display: inline-block;
@@ -209,19 +218,19 @@ a{
 }
 
 .media{
-    color: aliceblue;
+    color: var(--col-superwhite);
 }
 
 .in:hover{
-    color: rgb(235, 57, 57);
+    color: var(--col-in);
 }
 
 .sn:hover{
-    color: rgb(245, 232, 51);
+    color: var(--col-sn);
 }
 
 .fb:hover{
-    color: rgb(57, 99, 235);
+    color: var(--col-fb);
 }
 
 .business-info{
@@ -352,4 +361,5 @@ a{
         margin: 0 auto;
         max-width: 90em;
     }
+    
 }
