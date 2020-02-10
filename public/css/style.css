@@ -200,9 +200,33 @@ a{
     color:var(--col-superwhite);
 }
 
+.social-media li{
+    font-size: 1.8em;
+    display: inline-block;
+    grid-area: socialmedia;
+    padding: 0 1.2em;
+    text-decoration: none;
+}
+
+.media{
+    color: aliceblue;
+}
+
+.in:hover{
+    color: rgb(235, 57, 57);
+}
+
+.sn:hover{
+    color: rgb(245, 232, 51);
+}
+
+.fb:hover{
+    color: rgb(57, 99, 235);
+}
+
 .business-info{
     text-align: center;
-    padding: 0 0 1em 0;
+    padding: 1em 0 1em 0;
 }
 
 .inspirational-quote{
@@ -241,13 +265,21 @@ a{
 @media screen and (min-width: 50em) {
     .main-footer{
         display: grid;
-        grid-template-columns: 10em  auto  6em;
+        grid-template-columns: 10em  auto  15em;
         grid-template-areas:  "quicklink businessinfo  socialmedia";
     }
 
     .quick-link{
         grid-area: quicklink;
         line-height: 2;
+    }
+
+    .social-media li{
+        font-size: 1.8em;
+        display: inline-block;
+        grid-area: socialmedia;
+        padding: 0.5em;
+        text-decoration: none;
     }
     
     .business-info{
