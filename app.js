@@ -162,7 +162,7 @@ app.post("/login",(req,res)=>{
 });
 
 //Creating Web Server
-const PORT=7000;
+const PORT = process.env.PORT || 7000;
 app.listen(PORT,()=>{
-    console.log(`Web server is up and running!`)
+    console.log(`Web server is up and running at ${PORT}!`)
 })
