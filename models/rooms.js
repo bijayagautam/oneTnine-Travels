@@ -17,16 +17,6 @@ const room =
         });
         this.allRoomsDB.push(
         {
-            id: 101,
-            name: `Toronto Loft`,
-            image: `/img/room-01.jpg`,
-            description: `Cozy, warm atmosphere, perfect for the traveler looking for a real Toronto experience. Best neighborhood in downtown Toronto for the best price. In the hub of Toronto's nightlife, restaurants, theaters, museums.`,
-            price: 130,
-            size: `Queen`,
-            rating: 4.57
-        });
-        this.allRoomsDB.push(
-        {
             id: 102,
             name: `Toronto Lake View Loft`,
             image: `/img/room-02.jpg`,
