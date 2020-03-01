@@ -1,12 +1,15 @@
 const express = require('express')
 const router = express.Router();
+//Importing models data
+const featuredRoomModel = require("../models/featuredRooms");
 
 //Setting up routes
 router.get("/",(req,res)=>{
     res.render("home",{
         title: "oneTnine Travel",
         description: "Welcome to oneTnine Travel",
-        mainContent: "We are here to make your travel dream come true."
+        mainContent: "We are here to make your travel dream come true.",
+        featuredRooms : featuredRoomModel.getallfeaturedRooms()
     })
 });
 

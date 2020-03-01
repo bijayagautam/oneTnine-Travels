@@ -63,6 +63,23 @@
     </section>
 </div>
 
+<div>
+    <h2>Featured Room</h2>
+    <section class="room-list">
+        {{#each featuredRooms }}
+            <article class="room">
+                <header>
+                    <a href="#"><img src={{this.image}}></a>
+                </header>
+                <a href="#"><h3>{{this.name}}</h3></a>
+                <div class="price-rating">
+                    <h4>${{this.price}} CAD/night</h4>
+                </div>            
+            </article>
+        {{/each}}
+    </section>
+</div>
+
 <section class="photo-galary">
     <h2>Photos from our Traveler</h2>
     <article class="promotion">
