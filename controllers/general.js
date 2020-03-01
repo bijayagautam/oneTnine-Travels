@@ -96,9 +96,14 @@ router.post("/userRegistration",(req,res)=>{
     }
     else
     {
-        const {emailAddress,firstname,lastname} = req.body;
+        const {emailAddress,firstname,lastname,phone} = req.body;
         
         const sgMail = require('@sendgrid/mail');
+        const accountSid = process.env.ACCOUNT_SID;
+        const authToken = process.env.AUTH_TOKEN;
+        const client = require('twilio')(accountSid, authToken);
+
+        // Email procedure
         sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
         const msg = {
         to: `${emailAddress}`,
@@ -109,13 +114,27 @@ router.post("/userRegistration",(req,res)=>{
         };
         sgMail.send(msg)
         .then(()=>{
-            res.render("userDashboard",{
-                title: "Dashboard",
-                description: "Welcome to your dashboard.",
-                rooms : roomModel.getallRooms(),
-                user: firstname
-            })
             console.log(`Registration Email Sent Successfully.`);
+            // SMS procedure
+            client.messages
+            .create({
+                body: `${firstname} ${lastname} Message : Welcome to oneTnine ${firstname}, Thank you for registration.`,
+                from: process.env.TRIAL_PHONE_NUMBER,
+                to: `${phone}`
+            })
+            .then(() => {
+                res.render("userDashboard",{
+                    title: "Dashboard",
+                    description: "Welcome to your dashboard.",
+                    rooms : roomModel.getallRooms(),
+                    user: firstname
+                })
+                console.log(`Registration SMS Sent Successfully.`);
+            })
+            .catch((err)=>{
+                console.log(`Error ${err}`);
+                console.log(`Registration SMS NOT Sent.`);
+            })
         })
         .catch(err=>{
             console.log(`Error ${err}`);
