@@ -92,11 +92,30 @@ router.post("/userRegistration",(req,res)=>{
     }
     else
     {
-        res.render("home",{
-            title: "oneTnine Travel",
-            description: "Welcome to oneTnine Travel",
-            mainContent: "We are here to make your travel dream come true."
+        const {emailAddress,firstname,lastname} = req.body;
+        
+        const sgMail = require('@sendgrid/mail');
+        sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
+        const msg = {
+        to: `${emailAddress}`,
+        from: 'bijayagautam8@gmail.com',
+        subject: 'Thank you for registering with oneTnine',
+        html: `<Strong>Registered name:</strong> ${firstname} ${lastname} <br>
+        <Strong>Registered email address:</strong> ${emailAddress}`
+        };
+        sgMail.send(msg)
+        .then(()=>{
+            res.render("home",{
+                title: "oneTnine Travel",
+                description: "Welcome to oneTnine Travel",
+                mainContent: "We are here to make your travel dream come true."
+            })
+            console.log(`Registration Email Sent Successfully.`);
         })
+        .catch(err=>{
+            console.log(`Error ${err}`);
+            console.log(`Registration Email Not Sent.`);
+        });
     }
 });
 

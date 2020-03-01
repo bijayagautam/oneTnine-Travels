@@ -2,6 +2,9 @@ const express = require("express");
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 
+//Loading environment variable from the file
+require('dotenv').config({path:"./config/keys.env"});
+
 const app = express();
 
 //Allowing express to make static content avialable from the public
@@ -23,7 +26,7 @@ app.use("/",generalController);
 app.use("/",roomsController);
 
 //Creating Web Server
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT;
 app.listen(PORT,()=>{
     console.log(`Web server is up and running at ${PORT}!`)
 })
