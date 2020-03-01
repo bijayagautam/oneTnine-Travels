@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 //Importing models data
 const featuredRoomModel = require("../models/featuredRooms");
+const roomModel = require("../models/rooms");
 
 //Setting up routes
 router.get("/",(req,res)=>{
@@ -108,10 +109,11 @@ router.post("/userRegistration",(req,res)=>{
         };
         sgMail.send(msg)
         .then(()=>{
-            res.render("home",{
-                title: "oneTnine Travel",
-                description: "Welcome to oneTnine Travel",
-                mainContent: "We are here to make your travel dream come true."
+            res.render("userDashboard",{
+                title: "Dashboard",
+                description: "Welcome to your dashboard.",
+                rooms : roomModel.getallRooms(),
+                user: firstname
             })
             console.log(`Registration Email Sent Successfully.`);
         })
@@ -159,5 +161,11 @@ router.post("/login",(req,res)=>{
     }
 });
 
+router.get("/userDashboard",(req,res)=>{
+    res.render("userDashboard",{
+        title: "Dashboard",
+        description: "Welcome to your dashboard"
+    })
+});
 
 module.exports = router;

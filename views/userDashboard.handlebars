@@ -1,0 +1,18 @@
+<section>
+    <h1>Welcome to oneTnine {{user}} !</h1>
+    <h2>Book room instaltly</h2>
+    <div class="room-list">
+        {{#each rooms }}
+            <article class="room">
+                <header>
+                    <a href="#"><img src={{this.image}}></a>
+                </header>
+                <a href="#"><h3>{{this.name}}</h3></a>
+                <div class="price-rating">
+                    <h4>${{this.price}} CAD/night</h4>
+                    <sub>{{this.rating}}</sub>
+                </div>            
+            </article>
+        {{/each}}
+    </div>
+</section>
