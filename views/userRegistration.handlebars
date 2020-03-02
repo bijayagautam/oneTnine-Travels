@@ -8,30 +8,48 @@
        
         <ul class="form-box">
             <li><label for="email"></label></li>
-            <li><input type="email" name="emailAddress" placeholder="Email address"></li><br>
+            <li><input type="email" name="emailAddress" placeholder="Email address" value="{{data.emailAddress}}"></li><br>
+            {{#if messages.emailAddress}}
+                <div class="error-message"> {{messages.emailAddress}} </div>
+            {{/if}}
 
             <li><label for="phone"></label></li>
-            <li><input type="tel" name="phone" placeholder="phone number: 6471212121" required></li><br>
+            <li><input type="tel" name="phone" placeholder="phone number: 6471212121" required value="{{data.phone}}"></li><br>
             {{!-- pattern="[0-9]{3}[0-9]{2}[0-9]{4}" --}}
+            {{#if messages.phone}}
+                <div class="error-message"> {{messages.phone}} </div>
+            {{/if}}
             
             <li><label for="firstname"></label></li>
-            <li><input type="text" name="firstname" placeholder="First Name"></li><br>
+            <li><input type="text" name="firstname" placeholder="First Name" value="{{data.firstname}}"></li><br>
+            {{#if messages.firstname}}
+                <div class="error-message"> {{messages.firstname}} </div>
+            {{/if}}
 
             <li><label for="lastname"></label></li>
-            <li><input type="text" name="lastname" placeholder="Last Name"></li><br>
+            <li><input type="text" name="lastname" placeholder="Last Name" value="{{data.lastname}}"></li><br>
+            {{#if messages.lastname}}
+                <div class="error-message"> {{messages.lastname}} </div>
+            {{/if}}
 
             <li><label for="password"></label></li>
-            <li><input type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Create a password"></li><br>       
-                 
+            <li><input type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Create a password" value="{{data.password}}"></li><br>       
+            {{#if messages.password}}
+                <div class="error-message"> {{messages.password}} </div>
+            {{/if}} 
+
             <p>Birthday: To sign up, you need to be at least 18.</p>
             <li><label for="birthday"></label></li>
-            <li><input type="date" name="bday"></li><br>
+            <li><input type="date" name="bday" value="{{data.bday}}"></li><br>
+            {{#if messages.bday}}
+                <div class="error-message">
+                     {{messages.bday}}
+                </div>
+            {{/if}}
+
         </ul>
 
         <div>
-            {{#each messages}}
-                <div class="error-message">{{this}}</div>
-            {{/each}}
             <input type="submit" value="Sign up" class="form-button">
         </div>
 

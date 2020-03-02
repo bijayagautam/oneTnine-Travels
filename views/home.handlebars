@@ -28,14 +28,23 @@
                         <option value="Calgary">Calgary</option>
                     </select>
                 </li>
+                {{#if messages.city}}
+                    <div class="error-message"> {{messages.city}} </div>
+                {{/if}}
 
                 <p>CHECK-IN:</p>
                 <li><label for="checkin"></label></li>
-                <li><input type="date" name="checkIn"></li>
+                <li><input type="date" name="checkIn" value="{{data.checkIn}}"></li>
+                {{#if messages.checkIn}}
+                    <div class="error-message"> {{messages.checkIn}} </div>
+                {{/if}}
 
                 <p>CHECK OUT:</p>
-                <li><label for="checkin"></label></li>
-                <li><input type="date" name="checkOut"></li>
+                <li><label for="checkout"></label></li>
+                <li><input type="date" name="checkOut" value="{{data.checkOut}}"></li>
+                {{#if messages.checkOut}}
+                    <div class="error-message"> {{messages.checkOut}} </div>
+                {{/if}}
 
                 <p>GUESTS:</p>
                 <li><label for="guests"></label></li>
@@ -50,13 +59,12 @@
                         <option value="6">6+</option>
                     </select>
                 </li>
+                {{#if messages.guests}}
+                    <div class="error-message"> {{messages.guests}} </div>
+                {{/if}}
             </ul>
 
             <div>
-                {{#each messages}}
-                    <div class="error-message">{{this}}</div>
-                {{/each}}
-                
                 <input type="submit" value="Search" class="form-button">
             </div>
         </form>
@@ -64,7 +72,7 @@
 </div>
 
 <div>
-    <h2>Featured Room</h2>
+    <h2 class="sub-title">Featured Room</h2>
     <section class="room-list">
         {{#each featuredRooms }}
             <article class="room">

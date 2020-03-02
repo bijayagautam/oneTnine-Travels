@@ -8,16 +8,19 @@
        
         <ul class="form-box">
             <li><label for="email"></label></li>
-            <li><input type="email" name="emailAddress" placeholder="Email address"></li><br>
+            <li><input type="email" name="emailAddress" placeholder="Email address" value="{{data.emailAddress}}"></li><br>
+            {{#if messages.emailAddress}}
+                <div class="error-message"> {{messages.emailAddress}} </div>
+            {{/if}}
 
             <li><label for="password"></label></li>
-            <li><input type="password" name="password" placeholder="Password"></li>
+            <li><input type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Create a password" value="{{data.password}}"></li><br>       
+            {{#if messages.password}}
+                <div class="error-message"> {{messages.password}} </div>
+            {{/if}} 
         </ul>
 
         <div>
-            {{#each messages}}
-                <div class="error-message">{{this}}</div>
-            {{/each}}
             <input type="submit" value="Log in" class="form-button">
         </div>
 

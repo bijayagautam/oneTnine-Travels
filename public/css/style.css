@@ -175,9 +175,9 @@ a{
 .error-message{
     color: var(--col-errormessage);
     font-family: var(--validation-message-font);
-    padding: 0 0 0 3em;
+    padding: 0 0 1em 0;
     font-size: 0.8rem;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .photo-galary{
@@ -263,6 +263,10 @@ a{
     display: grid;
     grid-template-columns: auto 2em;
     padding: 0.5em;
+}
+
+.sub-title{
+    padding: 1em;
 }
 
 /* css to toggle show and hide content */

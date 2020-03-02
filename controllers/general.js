@@ -15,34 +15,39 @@ router.get("/",(req,res)=>{
 });
 
 router.post("/home",(req,res)=>{
-    const errors= [];
-    if((req.body.city=="") || (req.body.city== null))
+    const errors= {};
+    const {city,checkIn,checkOut,guests} = req.body;
+
+    if((city=="") || (city== null))
     {
-        errors.push("Please select the city.");
+        errors.city="Please select the city.";
     }
 
-    if((req.body.checkIn=="") || (req.body.checkIn== null))
+    if((checkIn=="") || (checkIn== null))
     {
-        errors.push("Please select or enter check in date.");
+        errors.checkIn="Please select or enter check in date.";
     }
 
-    if((req.body.checkOut=="") || (req.body.checkOut== null))
+    if((checkOut=="") || (checkOut== null))
     {
-        errors.push("Please select or enter check out date.")
+        errors.checkOut="Please select or enter check out date.";
     }
 
-    if((req.body.guests=="") || (req.body.guests== null))
+    if((guests=="") || (guests== null))
     {
-        errors.push("Please select no. of guest.");
+        errors.guests="Please select no. of guest.";
     }
 
-    if(errors.length > 0)
+    if(Object.keys(errors).length > 0)
     {
+        //Object.keys() method returns an array of a errors object's 
+        console.log(Object.keys(errors));
         res.render("home",{
             title: "oneTnine Travel",
             description: "Welcome to oneTnine Travel",
             mainContent: "We are here to make your travel dream come true.",
-            messages : errors
+            messages : errors,
+            data: {...req.body }
         })
     }
     else
@@ -62,42 +67,50 @@ router.get("/userRegistration",(req,res)=>{
 });
 
 router.post("/userRegistration",(req,res)=>{
-    const errors= [];
-    if((req.body.emailAddress=="") || (req.body.emailAddress== null))
+    const errors= {};
+    const {emailAddress,phone,firstname,lastname,password,bday} = req.body;
+
+    if((emailAddress=="") || (emailAddress== null))
     {
-        errors.push("Please enter your email address.");
+        errors.emailAddress="Please enter your email address.";
     }
 
-    if((req.body.firstname=="") || (req.body.firstname== null))
+    if((phone=="") || (phone== null))
     {
-        errors.push("Please enter your first name.");
+        errors.phone="Please enter your phone number.";
     }
 
-    if((req.body.lastname=="") || (req.body.lastname== null))
+    if((firstname=="") || (firstname== null))
     {
-        errors.push("Please enter your last name.");
+        errors.firstname="Please enter your first name.";
     }
 
-    if((req.body.password=="") || (req.body.password== null))
+    if((lastname=="") || (lastname== null))
     {
-        errors.push("Please create Password with UpperCase, LowerCase, Number")
+        errors.lastname="Please enter your last name.";
     }
 
-    if((req.body.bday=="") || (req.body.bday== null))
+    if((password=="") || (password== null))
     {
-        errors.push("Please enter or select your date of birth.")
+        errors.password="Please create Password with UpperCase, LowerCase, Number";
     }
 
-    if(errors.length > 0)
+    if((bday=="") || (bday== null))
     {
+        errors.bday="Please enter or select your date of birth.";
+    }
+
+    if(Object.keys(errors).length > 0)
+    {
+        //Object.keys() method returns an array of a errors object's 
+        console.log(Object.keys(errors));
         res.render("userRegistration",{
-        messages : errors
+            messages : errors,
+            data: {...req.body }
         })
     }
     else
-    {
-        const {emailAddress,firstname,lastname,phone} = req.body;
-        
+    {        
         const sgMail = require('@sendgrid/mail');
         const accountSid = process.env.ACCOUNT_SID;
         const authToken = process.env.AUTH_TOKEN;
@@ -151,23 +164,28 @@ router.get("/login",(req,res)=>{
 });
 
 router.post("/login",(req,res)=>{
-    const errors= [];
-    if((req.body.emailAddress=="") || (req.body.emailAddress== null))
+    const errors= {};
+    const {emailAddress,password} = req.body;
+
+    if((emailAddress=="") || (emailAddress== null))
     {
-        errors.push("Please enter your email address.");
+        errors.emailAddress="Please enter your email address.";
     }
 
-    if((req.body.password=="") || (req.body.password== null))
+    if((password=="") || (password== null))
     {
-        errors.push("Please enter your password.")
+        errors.password="Please enter your password.";
     }
 
-    if(errors.length > 0)
+    if(Object.keys(errors).length > 0)
     {
+        //Object.keys() method returns an array of a errors object's 
+        console.log(Object.keys(errors));
         res.render("login",{
             title: "Login",
             description : "User login Page",
-            messages : errors
+            messages : errors,
+            data: {...req.body }
         })
     }
     else
