@@ -1,6 +1,7 @@
 const express = require("express");
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 //Loading environment variable from the file
 require('dotenv').config({path:"./config/keys.env"});
@@ -24,6 +25,15 @@ const roomsController = require("./controllers/rooms");
 //Mapping each Controller to app object
 app.use("/",generalController);
 app.use("/",roomsController);
+
+//Connecting to Database
+mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(()=>{
+    console.log(`Database Connection Successful!`);
+})
+.catch(err=>
+    console.log(`Error Occured while connecting to database, Please contact your database administrator! ${err}!`)
+);
 
 //Creating Web Server
 const PORT = process.env.PORT;
