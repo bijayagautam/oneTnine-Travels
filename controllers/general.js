@@ -3,6 +3,7 @@ const router = express.Router();
 //Importing models data
 const featuredRoomModel = require("../models/featuredRooms");
 const roomModel = require("../models/rooms");
+const userModel = require("../models/user");
 
 //Setting up routes
 router.get("/",(req,res)=>{
@@ -136,12 +137,34 @@ router.post("/userRegistration",(req,res)=>{
                 to: `${phone}`
             })
             .then(() => {
-                res.render("userDashboard",{
-                    title: "Dashboard",
-                    description: "Welcome to your dashboard.",
-                    rooms : roomModel.getallRooms(),
-                    user: firstname
+
+                // Rules for inserting into a MongoDB database using MOONGOOSE is to do the following:
+                // 1. Need to create an instance of the model, 
+                // you must pass data that you want to insert in the form of an object literal
+                // 2. from the instance, you call the save method
+
+                const newUser = {
+                    emailAddress : emailAddress,
+                    phone : phone,
+                    firstname : firstname,
+                    lastname : lastname,
+                    password : password,
+                    bday : bday
+                }
+
+                const registerdUser = new userModel(newUser);
+                registerdUser.save()
+                .then(() => {
+                    res.render("userDashboard",{
+                        title: "Dashboard",
+                        description: "Welcome to your dashboard.",
+                        rooms : roomModel.getallRooms(),
+                        user: firstname
+                    })
                 })
+                .catch((err)=>{
+                    console.log(`Error occured when inserting in the database :${err}`);
+                });
                 console.log(`Registration SMS Sent Successfully.`);
             })
             .catch((err)=>{
@@ -154,6 +177,11 @@ router.post("/userRegistration",(req,res)=>{
             console.log(`Registration Email Not Sent.`);
         });
     }
+
+    
+    
+
+
 });
 
 router.get("/login",(req,res)=>{
