@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs'); //We can use this where we want to encrypt the string
 
 const userSchema = new Schema({
     
@@ -39,6 +40,24 @@ const userSchema = new Schema({
         default:Date.now()
     },
 });
+
+// Encryption
+userSchema.pre("save", function(next){
+    bcrypt.genSalt(10)
+    .then((salt)=>{
+        bcrypt.hash(this.password,salt)
+        .then((encryptPassword)=>{
+            this.password = encryptPassword;
+            next(); //next is important, otherwise it will keep loading
+        })
+        .catch(err=>
+            console.log(`Error occured when hashing:${err}`
+        ));
+    })
+    .catch(err=>
+        console.log(`Error occured when salting:${err}`
+    ));
+})
 
 // for every schema we need to create a schema per collection,
 // we must create a model object,

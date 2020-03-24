@@ -20,6 +20,7 @@
   "homepage": "https://github.com/bijayagautam/oneTnine-Travel#readme",
   "dependencies": {
     "@sendgrid/mail": "^6.5.3",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
