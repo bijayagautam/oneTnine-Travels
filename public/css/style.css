@@ -269,6 +269,20 @@ a{
     padding: 1em;
 }
 
+.form-header{
+    text-align: center;
+}
+
+.room-type{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.room-selection{
+    display: grid;
+    grid-template-columns: 3em 7em;
+}
+
 /* css to toggle show and hide content */
 .show-hide{
     display: none;
@@ -357,6 +371,11 @@ a{
         grid-template-columns: 1fr 1fr 1fr;
         grid-column-gap: 1em;
         padding: 1em;
+    }
+
+    .crud-form{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
