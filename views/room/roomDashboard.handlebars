@@ -1,10 +1,26 @@
 <section>
     <h1>Welcome to oneTnine {{user}} !</h1>
+    <div class="room-search">
+        <li class="search-drop">
+            <label for="city"></label>
+            <select name="city" class="form-dropdown">
+                <option value="" selected>Please select city you want travel</option>
+                <option value="Brampton">Brampton</option>
+                <option value="Oakville">Oakville </option>
+                <option value="Richmond Hill">Richmond Hill</option>
+                <option value="Toronto">Toronto</option>
+                <option value="Calgary">Calgary</option>
+            </select>
+        </li>
+        <div class="searchBtn">
+            <button class="search-button">SEARCH</button>
+        </div>
+    </div>
     <div class="crud-form">
         <article class="form">
             <form method="POST" action="/room/add" class="user-entry-form">
                 <a href="#" id="createRoom" class="form-header"><h1>Create Room</h1></a>
-                    <div class="show-hide" id="createRoomForm">
+                    <div id="createRoomForm">
                         <ul class="form-box" >
                         <li><label for="title"></label>Title</li>
                         <li><input type="text" name="name" value="{{data.name}}"></li><br>
@@ -50,28 +66,46 @@
         </article> 
 
         <article class="form">
-            <form method="POST" action="/room/update" class="user-entry-form">
+            <form method="POST" action="/room/update" >
                 <a href="#" id="modifyRoom" class="form-header"><h1>Modify Room</h1></a>
-                <div class="show-hide" id="modifyRoomForm">
+                <div id="modifyRoomForm">
 
-                    <div>
+                    {{!-- <div>
                         <input type="submit" value="Update Room" class="form-button">
-                    </div>
+                    </div> --}}
+                    <table class="room-info-table">
+                        <thead>
+                            <tr>
+                                <th>Room ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Description</th>
+                                <th>Room Location</th>
+                                <th>Room Type</th>
+                                <th>Room Image</th>
+                                <th colspan="2">Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Room ID</td>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Description</td>
+                                <td>Room Location</td>
+                                <td>Room Type</td>
+                                <td>Room Image</td>
+                                <td><input type="button" value="Update" class="search-button"></td>
+                                <td><input type="button" value="Delete" class="search-button"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                 </div>
             </form>
         </article> 
 
-        <article class="form">
-            <form method="POST" action="/room/delete" class="user-entry-form">
-                <a href="#" id="deleteRoom" class="form-header"><h1>Delete Room</h1></a>
-                <div class="show-hide" id="deleteRoomForm">
- 
-                    <div>
-                        <input type="submit" value="Delete Room" class="form-button">
-                    </div>
-                </div>
-            </form>
-        </article>     
+         
     </div>
     
 </section>

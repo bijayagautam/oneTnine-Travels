@@ -283,6 +283,43 @@ a{
     grid-template-columns: 3em 7em;
 }
 
+.room-info-table{
+    align-content: center;
+    padding-left: 3em;
+}
+
+table, th, td {
+    padding: 0.8em;
+    border: 1px solid black; 
+    border-collapse: collapse;
+}
+
+.room-search{
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-areas: "empty dropdown sbtn";
+    grid-gap: 1em;
+}
+
+.search-drop{
+    grid-area: dropdown;
+}
+
+.searchBtn{
+    grid-area: sbtn;
+}
+
+.search-button{
+    margin: 0.2em;
+    background-color:var(--col-darktheme);
+    color: var(--col-superwhite);
+    padding: 0.5em;
+    text-align: center;
+    font-size: 1em;
+    border: none;
+    border-radius: 0.3em;
+}
+
 /* css to toggle show and hide content */
 .show-hide{
     display: none;
@@ -375,7 +412,7 @@ a{
 
     .crud-form{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 2fr;
     }
 }
 

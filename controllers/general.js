@@ -7,7 +7,7 @@ const userModel = require("../models/user");
 
 //Setting up routes
 router.get("/",(req,res)=>{
-    res.render("home",{
+    res.render("general/home",{
         title: "oneTnine Travel",
         description: "Welcome to oneTnine Travel",
         mainContent: "We are here to make your travel dream come true.",
@@ -43,7 +43,7 @@ router.post("/home",(req,res)=>{
     {
         //Object.keys() method returns an array of a errors object's 
         console.log(Object.keys(errors));
-        res.render("home",{
+        res.render("general/home",{
             title: "oneTnine Travel",
             description: "Welcome to oneTnine Travel",
             mainContent: "We are here to make your travel dream come true.",
@@ -53,7 +53,7 @@ router.post("/home",(req,res)=>{
     }
     else
     {
-        res.render("login",{
+        res.render("user/login",{
             title: "Login",
             description : "User login Page"
         })
@@ -61,7 +61,7 @@ router.post("/home",(req,res)=>{
 });
 
 router.get("/userRegistration",(req,res)=>{
-    res.render("userRegistration",{
+    res.render("user/userRegistration",{
         title: "User Registration",
         description: "User Registration Page"
     })
@@ -105,7 +105,7 @@ router.post("/userRegistration",(req,res)=>{
     {
         //Object.keys() method returns an array of a errors object's 
         console.log(Object.keys(errors));
-        res.render("userRegistration",{
+        res.render("user/userRegistration",{
             messages : errors,
             data: {...req.body }
         })
@@ -155,7 +155,7 @@ router.post("/userRegistration",(req,res)=>{
                 const registerdUser = new userModel(newUser);
                 registerdUser.save()
                 .then(() => {
-                    res.render("userDashboard",{
+                    res.render("user/userDashboard",{
                         title: "Dashboard",
                         description: "Welcome to your dashboard.",
                         rooms : roomModel.getallRooms(),
@@ -185,7 +185,7 @@ router.post("/userRegistration",(req,res)=>{
 });
 
 router.get("/login",(req,res)=>{
-    res.render("login",{
+    res.render("user/login",{
         title: "Login",
         description : "User login Page"
     })
@@ -209,7 +209,7 @@ router.post("/login",(req,res)=>{
     {
         //Object.keys() method returns an array of a errors object's 
         console.log(Object.keys(errors));
-        res.render("login",{
+        res.render("user/login",{
             title: "Login",
             description : "User login Page",
             messages : errors,
@@ -218,16 +218,20 @@ router.post("/login",(req,res)=>{
     }
     else
     {
-        res.render("home",{
-            title: "oneTnine Travel",
-            description: "Welcome to oneTnine Travel",
-            mainContent: "We are here to make your travel dream come true."
+        res.render("room/roomDashboard",{
+            title: "Dashboard",
+            description: "Welcome to your dashboard."
         })
+        // res.render("home",{
+        //     title: "oneTnine Travel",
+        //     description: "Welcome to oneTnine Travel",
+        //     mainContent: "We are here to make your travel dream come true."
+        // })
     }
 });
 
 router.get("/userDashboard",(req,res)=>{
-    res.render("userDashboard",{
+    res.render("user/userDashboard",{
         title: "Dashboard",
         description: "Welcome to your dashboard"
     })

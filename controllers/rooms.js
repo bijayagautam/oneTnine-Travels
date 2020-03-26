@@ -4,7 +4,7 @@ const router = express.Router();
 const roomModel = require("../models/rooms");
 
 router.get("/roomListing",(req,res)=>{
-    res.render("roomListing",{
+    res.render("room/roomListing",{
         title: "Room Listing",
         description : "Room Listing Page",
         rooms : roomModel.getallRooms()
