@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router();
 //Importing models data
 const featuredRoomModel = require("../models/featuredRooms");
-const roomModel = require("../models/rooms");
+const roomModel = require("../models/Room");
 const userModel = require("../models/user");
 
 //Setting up routes
@@ -158,7 +158,7 @@ router.post("/userRegistration",(req,res)=>{
                     res.render("user/userDashboard",{
                         title: "Dashboard",
                         description: "Welcome to your dashboard.",
-                        rooms : roomModel.getallRooms(),
+                        // rooms : roomModel.getallRooms(),
                         user: firstname
                     })
                 })

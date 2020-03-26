@@ -20,11 +20,11 @@ app.set('view engine', 'handlebars');
 
 //Loading controllers
 const generalController = require("./controllers/general");
-const roomsController = require("./controllers/rooms");
+const roomController = require("./controllers/Room");
 
 //Mapping each Controller to app object
 app.use("/",generalController);
-app.use("/",roomsController);
+app.use("/",roomController);
 
 //Connecting to Database
 mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true})

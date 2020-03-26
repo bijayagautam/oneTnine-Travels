@@ -1,13 +1,13 @@
 <section class="room-list">
-    {{#each rooms }}
+    {{#each data }}
         <article class="room">
             <header>
-                <a href="#"><img src={{this.image}}></a>
+                <a href="#"><img src={{this.roomImage}}></a>
             </header>
             <a href="#"><h3>{{this.name}}</h3></a>
             <div class="price-rating">
                 <h4>${{this.price}} CAD/night</h4>
-                <sub>{{this.rating}}</sub>
+                <sub>{{this.roomLocation}}</sub>
             </div>            
         </article>
     {{/each}}

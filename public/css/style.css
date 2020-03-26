@@ -261,7 +261,7 @@ a{
 
 .price-rating{
     display: grid;
-    grid-template-columns: auto 2em;
+    grid-template-columns: auto;
     padding: 0.5em;
 }
 
@@ -296,13 +296,14 @@ table, th, td {
 
 .room-search{
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
-    grid-template-areas: "empty dropdown sbtn";
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "dropdown sbtn";
     grid-gap: 1em;
 }
 
 .search-drop{
     grid-area: dropdown;
+    margin-left: 0.5em;
 }
 
 .searchBtn{
@@ -412,7 +413,7 @@ table, th, td {
 
     .crud-form{
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 2fr 1fr;
     }
 }
 
