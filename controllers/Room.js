@@ -6,11 +6,11 @@ const roomModel = require("../models/Room");
 //Route to direct use to Add Room form
 router.get("/add",(req,res)=>
 {
-    res.render("room/roomAdd");
+    res.render("Room/roomAdd");
 });
 
 //When admin submit the add room form
-router.post("/roomAdd",(req,res)=>
+router.post("/add",(req,res)=>
 {
     const newRoom = {
         name : req.body.name,
@@ -24,7 +24,7 @@ router.post("/roomAdd",(req,res)=>
     const room =  new roomModel(newRoom);
     room.save()
     .then(()=>{
-        res.redirect("/list")
+        res.redirect("/room/list")
     })
     .catch(err=>console.log(`Error occured while inserting data:${err}`));
 });
@@ -52,6 +52,47 @@ router.get("/list",(req,res)=>
 
     })
     .catch(err=>console.log(`Error occured while pulling data :${err}`));
+
+});
+
+router.get("/edit/:id",(req,res)=>{
+
+    roomModel.findById(req.params.id)
+    .then((room)=>{
+
+        const {_id,name,price,description,roomLocation,roomType,roomImage} = room;
+        res.render("Room/roomEdit",{
+            _id,
+            name,
+            price,
+            description,
+            roomLocation,
+            roomType,
+            roomImage  
+        })
+
+    })
+    .catch(err=>console.log(`Error occured while pulling data :${err}`));
+})
+
+router.put("/update/:id",(req,res)=>{
+
+    const room =
+    {
+        name : req.body.name,
+        price : req.body.price,
+        description : req.body.description,
+        roomLocation : req.body.roomLocation,
+        roomType : req.body.roomType,
+        roomImage : req.body.roomImage
+    }
+
+    roomModel.updateOne({_id:req.params.id},room)
+    .then(()=>{
+        res.redirect("/room/list");
+    })
+    .catch(err=>console.log(`Error occured while updating data :${err}`));
+
 
 });
 

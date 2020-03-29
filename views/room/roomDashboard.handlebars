@@ -20,54 +20,53 @@
 
     <div class="crud-form">
         <article class="form">
-            <form method="POST" action="/room/update" >
-                <a href="#" id="modifyRoom" class="form-header"><h1>Modify Room</h1></a>
-                <div id="modifyRoomForm">
+            <a href="#" id="modifyRoom" class="form-header"><h1>Modify Room</h1></a>
+            <div id="modifyRoomForm">
 
-                    {{!-- <div>
-                        <input type="submit" value="Update Room" class="form-button">
-                    </div> --}}
-                    <table class="room-info-table">
-                        <thead>
-                            <tr>
-                                <th>Room ID</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Description</th>
-                                <th>Room Location</th>
-                                <th>Room Type</th>
-                                <th>Room Image</th>
-                                <th colspan="2">Operation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each data}}
-                            <tr>
-                                <td>{{this.id}}</td>
-                                <td>{{this.name}}</td>
-                                <td>{{this.price}}</td>
-                                <td>{{this.description}}</td>
-                                <td>{{this.roomLocation}}</td>
-                                <td>{{this.roomType}}</td>
-                                <td>{{this.roomImage}}</td>
-                                <td><input type="button" value="Update" class="search-button"></td>
-                                <td><input type="button" value="Delete" class="search-button"></td>
-                            </tr>
-                            {{else}}
-                            <td colspan="9">
-                                <p>No Room in Database</p>
-                            </td>
+                {{!-- <div>
+                    <input type="submit" value="Update Room" class="form-button">
+                </div> --}}
+                <table class="room-info-table">
+                    <thead>
+                        <tr>
+                            <th>Room ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Room Location</th>
+                            <th>Room Type</th>
+                            <th>Room Image</th>
+                            <th colspan="2">Operation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each data}}
+                        <tr>
+                            <td>{{this.id}}</td>
+                            <td>{{this.name}}</td>
+                            <td>{{this.price}}</td>
+                            <td>{{this.description}}</td>
+                            <td>{{this.roomLocation}}</td>
+                            <td>{{this.roomType}}</td>
+                            <td>{{this.roomImage}}</td>
+                            <td><a href="/room/edit/{{this.id}}" class="search-button">Update</a></td>
+                            <td><a href="/room/delete/{{this.id}}" class="search-button">Delete</a></td>
+                        </tr>
 
-                {{/each}}
-                        </tbody>
-                    </table>
+                        {{else}}
+                        <td colspan="9">
+                            <p>No Room in Database</p>
+                        </td>
+                        {{/each}}
 
-                </div>
-            </form>
+                        
+                    </tbody>
+                </table>
+            </div>
         </article> 
     </div>
 </section>
 
 </div>
-    <a href="/add">Add a Room</a>
+    <a href="/room/add">Add a Room</a>
 <div>

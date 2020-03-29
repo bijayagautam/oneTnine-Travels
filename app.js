@@ -18,13 +18,28 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
+//Allowing specific links that are submitted to send PUT and DELETE request respectively
+app.use((req,res,next)=>{
+
+    if(req.query.method=="PUT")
+    {
+        req.method="PUT"
+    }
+
+    else if(req.query.method=="DELETE")
+    {
+        req.method="DELETE"
+    }
+    next(); //important to move to next route
+})
+
 //Loading controllers
 const generalController = require("./controllers/general");
 const roomController = require("./controllers/Room");
 
 //Mapping each Controller to app object
 app.use("/",generalController);
-app.use("/",roomController);
+app.use("/room",roomController);
 
 //Connecting to Database
 mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true})
