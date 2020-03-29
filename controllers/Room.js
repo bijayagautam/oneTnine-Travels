@@ -96,6 +96,16 @@ router.put("/update/:id",(req,res)=>{
 
 });
 
+router.delete("/delete/:id",(req,res)=>{
+    
+    roomModel.deleteOne({_id:req.params.id})
+    .then(()=>{
+        res.redirect("/room/list");
+    })
+    .catch(err=>console.log(`Error occured while deleting data :${err}`));
+
+});
+
 router.get("/roomListing",(req,res)=>{
 
     roomModel.find()
