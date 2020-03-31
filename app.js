@@ -36,10 +36,15 @@ app.use((req,res,next)=>{
 //Loading controllers
 const generalController = require("./controllers/general");
 const roomController = require("./controllers/Room");
+const userController = require("./controllers/User");
 
 //Mapping each Controller to app object
 app.use("/",generalController);
 app.use("/room",roomController);
+app.use("/user",userController);
+app.use("/",(req,res)=>{
+    res.render("general/404");
+});
 
 //Connecting to Database
 mongoose.connect(process.env.MONGO_DB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true})
