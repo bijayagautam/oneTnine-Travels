@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 //Importing models data
 const roomModel = require("../models/Room");
+const path = require("path");
 
 //Route to direct use to Add Room form
 router.get("/add",(req,res)=>
@@ -23,8 +24,22 @@ router.post("/add",(req,res)=>
 
     const room =  new roomModel(newRoom);
     room.save()
-    .then(()=>{
-        res.redirect("/room/list")
+    .then((room)=>{
+
+        req.files.roomImage.name = `room_${room._id}${path.parse(req.files.roomImage.name).ext}`;
+        
+        req.files.roomImage.mv(`public/img/uploads/${req.files.roomImage.name}`)
+        .then(()=>{
+            
+            roomModel.updateOne({_id:room._id},{
+                roomImage: req.files.roomImage.name
+            })
+            .then(()=>{
+                res.redirect("/room/list")
+            })
+            
+        })
+
     })
     .catch(err=>console.log(`Error occured while inserting data:${err}`));
 });

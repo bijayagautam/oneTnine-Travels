@@ -2,6 +2,8 @@ const express = require("express");
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload');
+const path = require('path');
 
 //Loading environment variable from the file
 require('dotenv').config({path:"./config/keys.env"});
@@ -32,6 +34,9 @@ app.use((req,res,next)=>{
     }
     next(); //important to move to next route
 })
+
+//Allowing Fileupload
+app.use(fileUpload()); //Must be before routes
 
 //Loading controllers
 const generalController = require("./controllers/general");
