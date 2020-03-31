@@ -29,7 +29,6 @@
                 <table class="room-info-table">
                     <thead>
                         <tr>
-                            <th>Room ID</th>
                             <th>Name</th>
                             <th>Price</th>
                             <th>Description</th>
@@ -42,7 +41,6 @@
                     <tbody>
                         {{#each data}}
                         <tr>
-                            <td>{{this.id}}</td>
                             <td>{{this.name}}</td>
                             <td>{{this.price}}</td>
                             <td>{{this.description}}</td>
@@ -54,7 +52,7 @@
                         </tr>
 
                         {{else}}
-                        <td colspan="9">
+                        <td colspan="8">
                             <p>No Room in Database</p>
                         </td>
                         {{/each}}

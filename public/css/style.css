@@ -413,7 +413,7 @@ table, th, td {
 
     .crud-form{
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: auto;
     }
 }
 

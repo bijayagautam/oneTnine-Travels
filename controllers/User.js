@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 //Importing models data
 const userModel = require("../models/User");
+const roomModel = require("../models/Room");
 
 //Setting up routes
 router.get("/userRegistration",(req,res)=>{
@@ -135,7 +136,7 @@ router.get("/login",(req,res)=>{
     })
 });
 
-router.post("/login",(req,res)=>{
+router.post("/userDashboard",(req,res)=>{
     const errors= {};
     const {emailAddress,password} = req.body;
 
@@ -162,10 +163,33 @@ router.post("/login",(req,res)=>{
     }
     else
     {
+        // res.render("user/userDashboard",{
+        //     title: "Dashboard",
+        //     description: "Welcome to your dashboard"
+        // })
+
+        roomModel.find()
+        .then((rooms)=>{
+
+        const filteredRoom =   rooms.map(room=>{
+            return {
+                id: room._id,
+                name : room.name,
+                price : room.price,
+                description : room.description,
+                roomLocation : room.roomLocation,
+                roomType : room.roomType,
+                roomImage : room.roomImage
+            }
+        });
+
         res.render("room/roomDashboard",{
-            title: "Dashboard",
-            description: "Welcome to your dashboard."
-        })
+           data : filteredRoom
+        });
+
+    })
+    .catch(err=>console.log(`Error occured while pulling data :${err}`));
+
         
     }
 });
