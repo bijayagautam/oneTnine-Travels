@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
 const path = require('path');
+const session = require('express-session')
 
 //Loading environment variable from the file
 require('dotenv').config({path:"./config/keys.env"});
@@ -37,6 +38,13 @@ app.use((req,res,next)=>{
 
 //Allowing Fileupload
 app.use(fileUpload()); //Must be before routes
+
+//Session Midleware
+app.use(session({
+  secret: `${process.env.SESSION_TOKEN}`,
+  resave: false,
+  saveUninitialized: true
+}))
 
 //Loading controllers
 const generalController = require("./controllers/general");
