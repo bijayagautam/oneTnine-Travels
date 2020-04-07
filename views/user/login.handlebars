@@ -1,5 +1,5 @@
 <section class="form">
-    <form method="POST" action="/user/userDashboard" class="user-entry-form">
+    <form method="POST" action="/user/login" class="user-entry-form">
         <div class="form-info">
             <p>Login with <a href="#" class="other-link">Facebook</a> or <a href="#" class="other-link">Google</a> or</p>
             <hr>
@@ -25,6 +25,9 @@
         </div>
 
         <div class="form-question">
+            {{#each errors}}
+                <div class="error-message"> {{this}} </div>
+            {{/each}}
             <a href="#" class="other-link">Forgot Password?</a>
         </div>
         <hr>

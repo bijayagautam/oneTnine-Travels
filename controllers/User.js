@@ -3,6 +3,7 @@ const router = express.Router();
 //Importing models data
 const userModel = require("../models/User");
 const roomModel = require("../models/Room");
+const bcrypt = require("bcryptjs");
 
 //Setting up routes
 router.get("/userRegistration",(req,res)=>{
@@ -122,11 +123,6 @@ router.post("/userRegistration",(req,res)=>{
             console.log(`Registration Email Not Sent.`);
         });
     }
-
-    
-    
-
-
 });
 
 router.get("/login",(req,res)=>{
@@ -136,7 +132,62 @@ router.get("/login",(req,res)=>{
     })
 });
 
-router.post("/userDashboard",(req,res)=>{
+// router.post("/login",(req,res)=>
+// {
+//     const errors= {};
+//     const {emailAddress,password} = req.body;
+
+//     if((emailAddress=="") || (emailAddress== null))
+//     {
+//         errors.emailAddress="Please enter your email address.";
+//     }
+
+//     if((password=="") || (password== null))
+//     {
+//         errors.password="Please enter your password.";
+//     }
+
+//     if(Object.keys(errors).length > 0)
+//     {
+//         //Object.keys() method returns an array of a errors object's 
+//         console.log(Object.keys(errors));
+//         res.render("user/login",{
+//             title: "Login",
+//             description : "User login Page",
+//             messages : errors,
+//             data: {...req.body }
+//         })
+//     }
+//     else
+//     {
+//         roomModel.find()
+//         .then((rooms)=>{
+
+//         const filteredRoom =   rooms.map(room=>{
+//             return {
+//                 id: room._id,
+//                 name : room.name,
+//                 price : room.price,
+//                 description : room.description,
+//                 roomLocation : room.roomLocation,
+//                 roomType : room.roomType,
+//                 roomImage : room.roomImage
+//             }
+//         });
+
+//         res.render("room/roomDashboard",{
+//            data : filteredRoom
+//         });
+
+//     })
+//     .catch(err=>console.log(`Error occured while pulling data :${err}`));
+
+        
+//     }
+// });
+
+router.post("/login",(req,res)=>
+{
     const errors= {};
     const {emailAddress,password} = req.body;
 
@@ -163,42 +214,57 @@ router.post("/userDashboard",(req,res)=>{
     }
     else
     {
-        // res.render("user/userDashboard",{
-        //     title: "Dashboard",
-        //     description: "Welcome to your dashboard"
-        // })
+        userModel.findOne({emailAddress:req.body.emailAddress })
+        .then(user=>{
+            const errors=[];
 
-        roomModel.find()
-        .then((rooms)=>{
-
-        const filteredRoom =   rooms.map(room=>{
-            return {
-                id: room._id,
-                name : room.name,
-                price : room.price,
-                description : room.description,
-                roomLocation : room.roomLocation,
-                roomType : room.roomType,
-                roomImage : room.roomImage
+            //Email not found
+            if(user==null)
+            {
+                errors.push(`Sorry, your email and/or password is incorrect.`);
+                res.render("user/login",{
+                    errors
+                })
             }
-        });
+            //Email found
+            else
+            {
+                bcrypt.compare(req.body.password, user.password)
+                .then(isMatched=>{
 
-        res.render("room/roomDashboard",{
-           data : filteredRoom
-        });
-
-    })
-    .catch(err=>console.log(`Error occured while pulling data :${err}`));
-
-        
+                    if(isMatched)
+                    {
+                        //createing session
+                        req.session.userInfo = user;
+                        // res.redirect("/user/profile")
+                        res.redirect("/room/list")
+                    }
+                    else
+                    {
+                        errors.push(`Sorry, your email and/or password is incorrect. `);
+                        res.render("user/login",{
+                            errors
+                        }) 
+                    }
+                })
+                .catch(err=>console.log(`Error ${err}`));
+            }
+        })
+        .catch(err=>console.log(`Error ${err}`));
     }
 });
 
-router.get("/userDashboard",(req,res)=>{
-    res.render("user/userDashboard",{
-        title: "Dashboard",
-        description: "Welcome to your dashboard"
-    })
+router.get("/profile/",(req,res)=>{
+
+    res.render("user/userDashboard");
+
+});
+
+router.get("/logout",(req,res)=>{
+
+    req.session.destroy();
+    res.redirect("/user/login")
+
 });
 
 module.exports = router;
