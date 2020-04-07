@@ -4,6 +4,7 @@ const router = express.Router();
 const userModel = require("../models/User");
 const roomModel = require("../models/Room");
 const bcrypt = require("bcryptjs");
+const isAuthenticated = require("../middleware/auth");
 
 //Setting up routes
 router.get("/userRegistration",(req,res)=>{
@@ -132,60 +133,6 @@ router.get("/login",(req,res)=>{
     })
 });
 
-// router.post("/login",(req,res)=>
-// {
-//     const errors= {};
-//     const {emailAddress,password} = req.body;
-
-//     if((emailAddress=="") || (emailAddress== null))
-//     {
-//         errors.emailAddress="Please enter your email address.";
-//     }
-
-//     if((password=="") || (password== null))
-//     {
-//         errors.password="Please enter your password.";
-//     }
-
-//     if(Object.keys(errors).length > 0)
-//     {
-//         //Object.keys() method returns an array of a errors object's 
-//         console.log(Object.keys(errors));
-//         res.render("user/login",{
-//             title: "Login",
-//             description : "User login Page",
-//             messages : errors,
-//             data: {...req.body }
-//         })
-//     }
-//     else
-//     {
-//         roomModel.find()
-//         .then((rooms)=>{
-
-//         const filteredRoom =   rooms.map(room=>{
-//             return {
-//                 id: room._id,
-//                 name : room.name,
-//                 price : room.price,
-//                 description : room.description,
-//                 roomLocation : room.roomLocation,
-//                 roomType : room.roomType,
-//                 roomImage : room.roomImage
-//             }
-//         });
-
-//         res.render("room/roomDashboard",{
-//            data : filteredRoom
-//         });
-
-//     })
-//     .catch(err=>console.log(`Error occured while pulling data :${err}`));
-
-        
-//     }
-// });
-
 router.post("/login",(req,res)=>
 {
     const errors= {};
@@ -254,7 +201,7 @@ router.post("/login",(req,res)=>
     }
 });
 
-router.get("/profile/",(req,res)=>{
+router.get("/profile/",isAuthenticated,(req,res)=>{
 
     res.render("user/userDashboard");
 

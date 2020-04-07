@@ -24,12 +24,18 @@
                 <a href="#"><img src="/img/hamburger.svg" alt="Hamburger menu" id="hamMenu"></a>
             </div>
 
-            {{!-- Main Menu --}}
+            {{!-- Main Menu --}}    
             <ul class="main-menu show-hide" id="mainMenu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/room/roomListing">Room Listing</a></li>
-                <li><a href="/user/userRegistration">User Registration</a></li>
-                <li><a href="/user/login">Login</a></li>
+
+                {{#if user }}       
+                    <li><a href="/user/logout">Logout </a></li>
+                {{else}}
+                    <li><a href="/user/userRegistration">User Registration</a></li>
+                    <li><a href="/user/login">Login</a></li>
+                {{/if}}
+                
             </ul>
 
             {{!-- Search Lens --}}
