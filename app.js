@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
-//Allowing specific links that are submitted to send PUT and DELETE request respectively
+//Custom - Allowing specific links that are submitted to send PUT and DELETE request respectively
 app.use((req,res,next)=>{
 
     if(req.query.method=="PUT")
@@ -45,6 +45,13 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+
+//Custom -  Middleware functions
+app.use((req,res,next)=>{
+    //res.locals.user is a global handlebars variable which can be access in every single handlebars file 
+    res.locals.user = req.session.userInfo;
+    next();
+});
 
 //Loading controllers
 const generalController = require("./controllers/general");
