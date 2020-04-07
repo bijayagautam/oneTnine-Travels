@@ -3,15 +3,16 @@ const router = express.Router();
 //Importing models data
 const roomModel = require("../models/Room");
 const path = require("path");
+const isAuthenticated = require("../middleware/auth");
 
 //Route to direct use to Add Room form
-router.get("/add",(req,res)=>
+router.get("/add",isAuthenticated,(req,res)=>
 {
     res.render("Room/roomAdd");
 });
 
 //When admin submit the add room form
-router.post("/add",(req,res)=>
+router.post("/add",isAuthenticated,(req,res)=>
 {
     const newRoom = {
         name : req.body.name,
@@ -44,7 +45,7 @@ router.post("/add",(req,res)=>
     .catch(err=>console.log(`Error occured while inserting data:${err}`));
 });
 
-router.get("/list",(req,res)=>
+router.get("/list",isAuthenticated,(req,res)=>
 {
     roomModel.find()
     .then((rooms)=>{
@@ -70,7 +71,7 @@ router.get("/list",(req,res)=>
 
 });
 
-router.get("/edit/:id",(req,res)=>{
+router.get("/edit/:id",isAuthenticated,(req,res)=>{
 
     roomModel.findById(req.params.id)
     .then((room)=>{
@@ -90,7 +91,7 @@ router.get("/edit/:id",(req,res)=>{
     .catch(err=>console.log(`Error occured while pulling data :${err}`));
 })
 
-router.put("/update/:id",(req,res)=>{
+router.put("/update/:id",isAuthenticated,(req,res)=>{
 
     const room =
     {
@@ -111,7 +112,7 @@ router.put("/update/:id",(req,res)=>{
 
 });
 
-router.delete("/delete/:id",(req,res)=>{
+router.delete("/delete/:id",isAuthenticated,(req,res)=>{
     
     roomModel.deleteOne({_id:req.params.id})
     .then(()=>{
@@ -121,7 +122,7 @@ router.delete("/delete/:id",(req,res)=>{
 
 });
 
-router.get("/roomListing",(req,res)=>{
+router.get("/roomListing",isAuthenticated,(req,res)=>{
 
     roomModel.find()
     .then((rooms)=>{

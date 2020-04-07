@@ -5,6 +5,7 @@ const userModel = require("../models/User");
 const roomModel = require("../models/Room");
 const bcrypt = require("bcryptjs");
 const isAuthenticated = require("../middleware/auth");
+const dashBoardHelper = require("../middleware/authorization");
 
 //Setting up routes
 router.get("/userRegistration",(req,res)=>{
@@ -102,12 +103,7 @@ router.post("/userRegistration",(req,res)=>{
                 const registerdUser = new userModel(newUser);
                 registerdUser.save()
                 .then(() => {
-                    res.render("user/userDashboard",{
-                        title: "Dashboard",
-                        description: "Welcome to your dashboard.",
-                        // rooms : roomModel.getallRooms(),
-                        user: firstname
-                    })
+                    res.redirect(`/user/login`)
                 })
                 .catch((err)=>{
                     console.log(`Error occured when inserting in the database :${err}`);
@@ -183,8 +179,7 @@ router.post("/login",(req,res)=>
                     {
                         //createing session
                         req.session.userInfo = user;
-                        // res.redirect("/user/profile")
-                        res.redirect("/room/list")
+                        res.redirect("/user/profile")
                     }
                     else
                     {
@@ -201,11 +196,7 @@ router.post("/login",(req,res)=>
     }
 });
 
-router.get("/profile/",isAuthenticated,(req,res)=>{
-
-    res.render("user/userDashboard");
-
-});
+router.get("/profile",isAuthenticated,dashBoardHelper);
 
 router.get("/logout",(req,res)=>{
 
