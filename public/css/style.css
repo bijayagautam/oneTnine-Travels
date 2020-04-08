@@ -285,13 +285,22 @@ a{
 
 .room-info-table{
     align-content: center;
-    padding-left: 3em;
+    padding-left: em;
 }
 
 table, th, td {
     padding: 0.8em;
     border: 1px solid black; 
     border-collapse: collapse;
+}
+
+.room-info-table th{
+    background-color: #d8f5f5;
+    font-weight: bolder;
+}
+
+td {
+    white-space:nowrap;
 }
 
 .room-search{
@@ -319,6 +328,40 @@ table, th, td {
     font-size: 1em;
     border: none;
     border-radius: 0.3em;
+}
+
+.dashoard-header{
+    text-align: center;
+}
+
+.admin-panel{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    text-align: center;
+    padding-top: 1em;
+    grid-gap: 0.5em;
+    margin: 0 0.5em;
+}
+
+.panel-operation{
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    background-color: var(--col-theme-accent);
+    color: var(--col-theme-fg);
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.roomdashboard{
+    display: grid;
+    grid-template-columns: auto;
+    overflow-x:auto;
+    overflow-y:auto;
 }
 
 /* css to toggle show and hide content */
@@ -411,9 +454,14 @@ table, th, td {
         padding: 1em;
     }
 
-    .crud-form{
-        display: grid;
-        grid-template-columns: auto;
+    .admin-panel{
+        grid-template-columns: 15em 15em;
+        margin: 0 0.5em;
+    }
+
+    .dashoard-header{
+        text-align: left;
+        margin-left: 0.5em;
     }
 }
 

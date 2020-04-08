@@ -29,7 +29,8 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/room/roomListing">Room Listing</a></li>
 
-                {{#if user }}       
+                {{#if user }}    
+                    <li><a href="/user/profile">My Dashboard </a></li>
                     <li><a href="/user/logout">Logout </a></li>
                 {{else}}
                     <li><a href="/user/userRegistration">User Registration</a></li>

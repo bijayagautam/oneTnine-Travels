@@ -14,7 +14,7 @@
             {{/if}}
 
             <li><label for="password"></label></li>
-            <li><input type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Create a password" value="{{data.password}}"></li><br>       
+            <li><input type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder="Enter your password" value="{{data.password}}"></li><br>       
             {{#if messages.password}}
                 <div class="error-message"> {{messages.password}} </div>
             {{/if}} 

@@ -1,7 +1,16 @@
+<section>
+    <h1 class="dashoard-header">Welcome to Dashboard {{user.firstname}} !</h1>
+
+    <div class="admin-panel">
+        <a href="/room/list" class="panel-operation">View Room Details</a>
+        <a href="/room/add" class="panel-operation">Add a Room</a>
+    </div>
+</section>
+
 <div class="crud-form">
     <article class="form">
         <form method="POST" action="/room/update/{{_id}}?method=PUT" class="user-entry-form">
-            <a href="#" id="createRoom" class="form-header"><h1>Update Room</h1></a>
+            <a href="#" id="createRoom" class="form-header"><h1>Room Update Form</h1></a>
                 <div id="createRoomForm">
                     <ul class="form-box" >
                     <li><label for="title"></label>Title</li>
