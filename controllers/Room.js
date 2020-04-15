@@ -8,7 +8,7 @@ const isAuthenticated = require("../middleware/auth");
 //Route to direct use to Add Room form
 router.get("/add",isAuthenticated,(req,res)=>
 {
-    res.render("Room/roomAdd");
+    res.render("room/roomAdd");
 });
 
 //When admin submit the add room form
@@ -77,7 +77,7 @@ router.get("/edit/:id",isAuthenticated,(req,res)=>{
     .then((room)=>{
 
         const {_id,name,price,description,roomLocation,roomType,roomImage} = room;
-        res.render("Room/roomEdit",{
+        res.render("room/roomEdit",{
             _id,
             name,
             price,

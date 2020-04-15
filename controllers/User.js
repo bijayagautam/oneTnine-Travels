@@ -59,65 +59,64 @@ router.post("/userRegistration",(req,res)=>{
         })
     }
     else
-    {        
-        const sgMail = require('@sendgrid/mail');
-        const accountSid = process.env.ACCOUNT_SID;
-        const authToken = process.env.AUTH_TOKEN;
-        const client = require('twilio')(accountSid, authToken);
+    {   
+        // Rules for inserting into a MongoDB database using MOONGOOSE is to do the following:
+        // 1. Need to create an instance of the model, 
+        // you must pass data that you want to insert in the form of an object literal
+        // 2. from the instance, you call the save method
 
-        // Email procedure
-        sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
-        const msg = {
-        to: `${emailAddress}`,
-        from: 'bijayagautam8@gmail.com',
-        subject: 'Thank you for registering with oneTnine',
-        html: `<Strong>Registered name:</strong> ${firstname} ${lastname} <br>
-        <Strong>Registered email address:</strong> ${emailAddress}`
-        };
-        sgMail.send(msg)
-        .then(()=>{
-            console.log(`Registration Email Sent Successfully.`);
-            // SMS procedure
-            client.messages
-            .create({
-                body: `${firstname} ${lastname} Message : Welcome to oneTnine ${firstname}, Thank you for registration.`,
-                from: process.env.TRIAL_PHONE_NUMBER,
-                to: `${phone}`
-            })
-            .then(() => {
+        const newUser = {
+            emailAddress : emailAddress,
+            phone : phone,
+            firstname : firstname,
+            lastname : lastname,
+            password : password,
+            bday : bday
+        }
 
-                // Rules for inserting into a MongoDB database using MOONGOOSE is to do the following:
-                // 1. Need to create an instance of the model, 
-                // you must pass data that you want to insert in the form of an object literal
-                // 2. from the instance, you call the save method
+        const registerdUser = new userModel(newUser);
+        registerdUser.save()
+        .then(() => {
+            const sgMail = require('@sendgrid/mail');
+            const accountSid = process.env.ACCOUNT_SID;
+            const authToken = process.env.AUTH_TOKEN;
+            const client = require('twilio')(accountSid, authToken);
 
-                const newUser = {
-                    emailAddress : emailAddress,
-                    phone : phone,
-                    firstname : firstname,
-                    lastname : lastname,
-                    password : password,
-                    bday : bday
-                }
-
-                const registerdUser = new userModel(newUser);
-                registerdUser.save()
-                .then(() => {
-                    res.redirect(`/user/login`)
+            // Email procedure
+            sgMail.setApiKey(process.env.SEND_GRID_API_KEY);
+            const msg = {
+                to: `${emailAddress}`,
+                from: 'bijayagautam8@gmail.com',
+                subject: 'Thank you for registering with oneTnine',
+                html: `<Strong>Registered name:</strong> ${firstname} ${lastname} <br>
+                <Strong>Registered email address:</strong> ${emailAddress}`
+            };
+            sgMail.send(msg)
+                .then(()=>{
+                    console.log(`Registration Email Sent Successfully.`);
+                    // SMS procedure
+                    client.messages
+                    .create({
+                        body: `${firstname} ${lastname} Message : Welcome to oneTnine ${firstname}, Thank you for registration.`,
+                        from: process.env.TRIAL_PHONE_NUMBER,
+                        to: `${phone}`
+                    })
+                    .then(() => {
+                        res.redirect(`/user/login`)
+                        console.log(`Registration SMS Sent Successfully.`);
+                    })
+                    .catch((err)=>{
+                        console.log(`Error ${err}`);
+                        console.log(`Registration SMS NOT Sent.`);
+                    })
                 })
-                .catch((err)=>{
-                    console.log(`Error occured when inserting in the database :${err}`);
+                .catch(err=>{
+                    console.log(`Error ${err}`);
+                    console.log(`Registration Email Not Sent.`);
                 });
-                console.log(`Registration SMS Sent Successfully.`);
             })
-            .catch((err)=>{
-                console.log(`Error ${err}`);
-                console.log(`Registration SMS NOT Sent.`);
-            })
-        })
-        .catch(err=>{
-            console.log(`Error ${err}`);
-            console.log(`Registration Email Not Sent.`);
+        .catch((err)=>{
+            console.log(`Error occured when inserting in the database :${err}`);
         });
     }
 });
