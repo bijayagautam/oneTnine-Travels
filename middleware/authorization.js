@@ -2,7 +2,7 @@ const dashBoardHelper = (req,res)=>{
 
     if(req.session.userInfo.type=="Admin")
     {
-        res.render("Room/roomDashboard");
+        res.render("room/roomDashboard");
     }
     
     else
