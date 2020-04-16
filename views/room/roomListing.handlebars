@@ -32,4 +32,15 @@
             </div>            
         </article>
     {{/each}}
+
+    {{#unless data}}
+    <div class="records-not-found">
+        <hr>
+        <h3>Room is not available for this location</h3>
+        <p>Please try another City</p>
+        <hr>
+    </div>
+    {{/unless}} 
 </section>
+
+  

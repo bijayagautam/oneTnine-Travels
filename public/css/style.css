@@ -199,6 +199,10 @@ a{
     align-items: center;
 }
 
+.records-not-found{
+    text-align: center;
+}
+
 /* CSS for main footer starts here */
 .main-footer{
     background-color: var(--col-theme-accent);
