@@ -7,7 +7,7 @@ const dashBoardHelper = (req,res)=>{
     
     else
     {
-        res.render("user/userDashboard");
+        res.redirect("/user/userDashboard");
     }
 
 }

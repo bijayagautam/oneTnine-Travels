@@ -197,6 +197,32 @@ router.post("/login",(req,res)=>
 
 router.get("/profile",isAuthenticated,dashBoardHelper);
 
+router.get("/userDashboard",(req,res)=>{
+    
+    roomModel.find()
+    .then((rooms)=>{
+
+        const filteredRoom =   rooms.map(room=>{
+            return {
+                id: room._id,
+                name : room.name,
+                price : room.price,
+                roomLocation : room.roomLocation,
+                roomType : room.roomType,
+                roomImage : room.roomImage
+            }
+        });
+
+        res.render("user/userDashboard",{
+            title: "User Dashboard",
+            description: "Welcome to your dashboard",
+            data : filteredRoom
+        })
+    })
+    .catch(err=>console.log(`Error occured while pulling data :${err}`));
+
+});
+
 router.get("/logout",(req,res)=>{
 
     req.session.destroy();
