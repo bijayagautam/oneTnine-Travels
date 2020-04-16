@@ -1,7 +1,30 @@
 <section>
-    <h1>Welcome to oneTnine {{user.firstname}} !</h1>
+    <div class="user-welcome">
+        <h1>Welcome to oneTnine {{user.firstname}} !</h1>
+        <h2>Book room instaltly</h2>
+    </div>
+    
+    <div>
+        <form method="POST" action="/room/search" class="room-search-area">
+            <div>
+                <label for="city"></label>
+                <li>
+                    <select name="city" class="form-dropdown">
+                        <option value="" selected>Search by location</option>
+                        <option value="Toronto">Toronto</option>
+                        <option value="Mississauga">Mississauga</option>
+                        <option value="Oakville">Oakville </option>
+                        <option value="Richmond Hill">Richmond Hill</option>
+                        <option value="Calgary">Calgary</option>
+                    </select>
+                </li>
+            </div>
+            <div>
+                <input type="submit" value="Search" class="form-button">
+            </div>
+        </form>
+    </div>
 
-    <h2>Book room instaltly</h2>
     <div class="room-list">
         {{#each data }}
             <article class="room">

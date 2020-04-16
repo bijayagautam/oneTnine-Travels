@@ -122,7 +122,7 @@ router.delete("/delete/:id",isAuthenticated,(req,res)=>{
 
 });
 
-router.get("/roomListing",isAuthenticated,(req,res)=>{
+router.get("/roomListing",(req,res)=>{
 
     roomModel.find()
     .then((rooms)=>{
@@ -147,6 +147,33 @@ router.get("/roomListing",isAuthenticated,(req,res)=>{
     })
     .catch(err=>console.log(`Error occured while pulling data :${err}`));
 
+    
+});
+
+router.post("/search",(req,res)=>
+{
+    roomModel.find({roomLocation: req.body.city})
+    .then((rooms)=>{
+
+        const filteredRoom =   rooms.map(room=>{
+            return {
+                name : room.name,
+                price : room.price,
+                description : room.description,
+                roomLocation : room.roomLocation,
+                roomType : room.roomType,
+                roomImage : room.roomImage
+            }
+        });
+
+        res.render("room/roomListing",{
+            title: "Room Listing",
+            description : "Room Listing Page",
+            data : filteredRoom
+        });
+
+    })
+    .catch(err=>console.log(`Error occured while pulling data :${err}`));
     
 });
 

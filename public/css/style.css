@@ -188,6 +188,17 @@ a{
     display: inline;
 }
 
+.user-welcome{
+    margin-left: 1em;
+}
+
+.room-search-area{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin: 0 1em;
+    align-items: center;
+}
+
 /* CSS for main footer starts here */
 .main-footer{
     background-color: var(--col-theme-accent);
@@ -462,6 +473,13 @@ td {
     .dashoard-header{
         text-align: left;
         margin-left: 0.5em;
+    }
+
+    .room-search-area{
+        display: grid;
+        grid-template-columns: 3fr 3fr;
+        margin: 0 1em;
+        align-items: center;
     }
 }
 
