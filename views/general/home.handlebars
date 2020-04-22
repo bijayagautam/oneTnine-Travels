@@ -74,14 +74,15 @@
 <div>
     <h2 class="sub-title">Featured Room</h2>
     <section class="room-list">
-        {{#each featuredRooms }}
+        {{#each data }}
             <article class="room">
                 <header>
-                    <a href="#"><img src={{this.image}}></a>
+                    <a href="#"><img src="/img/uploads/{{this.roomImage}}"></a>
                 </header>
                 <a href="#"><h3>{{this.name}}</h3></a>
                 <div class="price-rating">
                     <h4>${{this.price}} CAD/night</h4>
+                    <sub>{{this.roomLocation}}</sub>
                 </div>            
             </article>
         {{/each}}

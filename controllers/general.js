@@ -1,17 +1,36 @@
 const express = require('express')
 const router = express.Router();
 //Importing models data
-const featuredRoomModel = require("../models/featuredRooms");
 const roomModel = require("../models/Room");
 
 //Setting up routes
 router.get("/",(req,res)=>{
-    res.render("general/home",{
-        title: "oneTnine Travel",
-        description: "Welcome to oneTnine Travel",
-        mainContent: "We are here to make your travel dream come true.",
-        featuredRooms : featuredRoomModel.getallfeaturedRooms()
+
+    roomModel.find({roomType: 1})
+    .then((rooms)=>{
+
+        const featuredRoom =   rooms.map(room=>{
+            return {
+                name : room.name,
+                price : room.price,
+                description : room.description,
+                roomLocation : room.roomLocation,
+                roomType : room.roomType,
+                roomImage : room.roomImage
+            }
+        });
+
+        res.render("general/home",{
+            title: "oneTnine Travel",
+            description: "Welcome to oneTnine Travel",
+            mainContent: "We are here to make your travel dream come true.",
+            data : featuredRoom
+        })
+
     })
+    .catch(err=>console.log(`Error occured while pulling data :${err}`));
+
+    
 });
 
 router.post("/home",(req,res)=>{
